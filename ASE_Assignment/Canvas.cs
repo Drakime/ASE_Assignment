@@ -9,9 +9,9 @@ namespace ASE_Assignment
     public class Canvas
     {
         private Bitmap bitmap;
-        private int penPointX = 0;
-        private int penPointY = 0;
-        Color penColour = Color.Black;
+        private int pointX = 0;
+        private int pointY = 0;
+        Color toolColour = Color.Black;
         private Boolean shapeFill = false;
 
         public Canvas(Bitmap bitmap)
@@ -19,26 +19,41 @@ namespace ASE_Assignment
             this.bitmap = bitmap;
         }
 
+        /// <summary>
+        /// Gets the bitmap of the canvas.
+        /// </summary>
         public Bitmap Bitmap { get { return bitmap; } }
 
-        public int PenPointX
+        /// <summary>
+        /// Gets or sets the x-coordinate of the drawing tool.
+        /// </summary>
+        public int PointX
         {
-            get { return penPointX; }
-            set { penPointX = value; }
+            get { return PointX; }
+            set { PointX = value; }
         }
 
-        public int PenPointY
+        /// <summary>
+        /// Gets or sets the y-coordinate of the drawing tool.
+        /// </summary>
+        public int PointY
         {
-            get { return penPointY; }
-            set { penPointY = value; }
+            get { return PointY; }
+            set { PointY = value; }
         }
 
-        public Color PenColour
+        /// <summary>
+        /// Gets or sets the colour of the drawing tool.
+        /// </summary>
+        public Color ToolColour
         {
-            get { return penColour; }
-            set { penColour = value; }
+            get { return ToolColour; }
+            set { ToolColour = value; }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether drawn shapes are filled.
+        /// </summary>
         public Boolean ShapeFill
         {
             get { return shapeFill; }
