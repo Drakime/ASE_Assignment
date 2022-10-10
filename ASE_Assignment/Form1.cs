@@ -2,9 +2,39 @@ namespace ASE_Assignment
 {
     public partial class Form1 : Form
     {
+        Canvas canvas;
+
         public Form1()
         {
             InitializeComponent();
+            drawingCanvas.BackColor = Color.Gray;
+            runButton.Enabled = false;
+
+            // Creates new bitmap in canvas class, the same size as the picturebox.
+            canvas = new Canvas(new Bitmap(drawingCanvas.Width, drawingCanvas.Height));
+        }
+
+        // Disables run button if program textbox is empty
+        private void programTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (programTextBox.Text.Equals(""))
+            {
+                runButton.Enabled = false;
+            }
+            else
+            {
+                runButton.Enabled = true;
+            }
+        }
+
+        private void runButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void commandLine_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
