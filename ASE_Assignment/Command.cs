@@ -14,6 +14,8 @@ namespace ASE_Assignment
         protected Canvas drawingCanvas;
         private Color toolColour = new Color();
 
+        public abstract void ParseParameters(string userInput);
+
         public abstract void Operation();
 
         public string Name

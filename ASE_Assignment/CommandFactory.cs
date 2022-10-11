@@ -27,11 +27,11 @@ namespace ASE_Assignment
                 case "triangle":
                     return new Triangle(canvas, userInput);
                 case "clear":
-                    return new Clear();
+                    return new Clear(canvas, userInput);
                 case "reset":
-                    return new Reset();
+                    return new Reset(canvas, userInput);
                 case "pen":
-                    return new PenColour(canvas, userInput);
+                    return new Colour(canvas, userInput);
                 case "fill":
                     return new Fill(canvas, userInput);
                 default:

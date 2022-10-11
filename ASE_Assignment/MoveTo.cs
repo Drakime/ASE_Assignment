@@ -16,7 +16,7 @@ namespace ASE_Assignment
             ParseParameters(userInput);
         }
 
-        public void ParseParameters(string userInput)
+        public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(" ");
 
