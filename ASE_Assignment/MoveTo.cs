@@ -13,6 +13,7 @@ namespace ASE_Assignment
             Name = "moveto";
             UserInput = userInput;
             DrawingCanvas = drawingCanvas;
+            ParseParameters(userInput);
         }
 
         public void ParseParameters(string userInput)
