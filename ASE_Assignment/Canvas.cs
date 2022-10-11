@@ -12,7 +12,7 @@ namespace ASE_Assignment
         private int pointX = 0;
         private int pointY = 0;
         Color toolColour = Color.Black;
-        private Boolean shapeFill = false;
+        private bool hasShapeFilled = false;
 
         public Canvas(Bitmap bitmap)
         {
@@ -29,8 +29,8 @@ namespace ASE_Assignment
         /// </summary>
         public int PointX
         {
-            get { return PointX; }
-            set { PointX = value; }
+            get { return pointX; }
+            set { pointX = value; }
         }
 
         /// <summary>
@@ -38,8 +38,8 @@ namespace ASE_Assignment
         /// </summary>
         public int PointY
         {
-            get { return PointY; }
-            set { PointY = value; }
+            get { return pointY; }
+            set { pointY = value; }
         }
 
         /// <summary>
@@ -47,17 +47,17 @@ namespace ASE_Assignment
         /// </summary>
         public Color ToolColour
         {
-            get { return ToolColour; }
-            set { ToolColour = value; }
+            get { return toolColour; }
+            set { toolColour = value; }
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether drawn shapes are filled.
         /// </summary>
-        public Boolean ShapeFill
+        public bool HasShapeFilled
         {
-            get { return shapeFill; }
-            set { shapeFill = value; }
+            get { return hasShapeFilled; }
+            set { hasShapeFilled = value; }
         }
     }
 }
