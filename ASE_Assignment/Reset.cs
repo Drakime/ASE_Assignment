@@ -8,10 +8,10 @@ namespace ASE_Assignment
 {
     public class Reset : Command
     {
-        public Reset(Canvas drawingCanvas, string userInput)
+        public Reset(Canvas canvas, string userInput)
         {
             Name = "reset";
-            DrawingCanvas = drawingCanvas;
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 

@@ -10,10 +10,10 @@ namespace ASE_Assignment
     {
         string shapeFill;
 
-        public Fill(Canvas drawingCanvas, string userInput)
+        public Fill(Canvas canvas, string userInput)
         {
             Name = "fill";
-            DrawingCanvas = drawingCanvas;
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 

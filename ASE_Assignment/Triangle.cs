@@ -13,6 +13,7 @@ namespace ASE_Assignment
         public Triangle(Canvas canvas, string userInput)
         {
             Name = "triangle";
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 

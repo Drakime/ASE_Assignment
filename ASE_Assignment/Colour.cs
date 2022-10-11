@@ -10,9 +10,10 @@ namespace ASE_Assignment
     {
         Color colour;
         
-        public Colour(Canvas drawingCanvas, string userInput)
+        public Colour(Canvas canvas, string userInput)
         {
             Name = "colour";
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 

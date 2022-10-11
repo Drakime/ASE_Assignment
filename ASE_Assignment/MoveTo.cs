@@ -8,11 +8,11 @@ namespace ASE_Assignment
 {
     public class MoveTo : Command
     {
-        public MoveTo(Canvas drawingCanvas, string userInput)
+        public MoveTo(Canvas canvas, string userInput)
         {
             Name = "moveto";
             UserInput = userInput;
-            DrawingCanvas = drawingCanvas;
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 
