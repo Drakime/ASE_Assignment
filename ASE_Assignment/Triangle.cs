@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace ASE_Assignment
     public class Triangle : Command
     {
         private List<Point> points = new List<Point>();
+        private List<int> splitPoints = new List<int>();
 
         public Triangle(Canvas canvas, string userInput)
         {
@@ -21,17 +23,32 @@ namespace ASE_Assignment
         {
             string[] splitUserInput = userInput.Split(" ");
 
-            if (splitUserInput.Length != 7)
+            if (splitUserInput.Length != 4)
             {
                 throw new ArgumentException("Number of parameters are incorrect");
+            }
+
+            foreach (string parameter in splitUserInput.Skip(1))
+            {
+                string[] splitParameter = parameter.Split(",");
+
+                for (int i = 0; i < splitParameter.Length; i++)
+                {
+                    splitPoints.Add(Int32.Parse(splitParameter[i]));
+                }
+            }
+
+            if (splitPoints.Count != 6)
+            {
+                throw new ArgumentException("Invalid parameters");
             }
             else
             {
                 try
                 {
-                    Point pt1 = new Point(Int32.Parse(splitUserInput[1]), Int32.Parse(splitUserInput[2]));
-                    Point pt2 = new Point(Int32.Parse(splitUserInput[3]), Int32.Parse(splitUserInput[4]));
-                    Point pt3 = new Point(Int32.Parse(splitUserInput[5]), Int32.Parse(splitUserInput[6]));
+                    Point pt1 = new Point(splitPoints[0], splitPoints[1]);
+                    Point pt2 = new Point(splitPoints[2], splitPoints[3]);
+                    Point pt3 = new Point(splitPoints[4], splitPoints[5]);
                     points.Add(pt1);
                     points.Add(pt2);
                     points.Add(pt3);

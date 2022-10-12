@@ -20,34 +20,29 @@ namespace ASE_Assignment
         public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(' ');
+            string inputColour = splitUserInput[1];
 
             if (splitUserInput.Length != 2)
             {
                 throw new ArgumentException("Number of parameters is incorrect");
             }
-            else
-            {
-                if (splitUserInput[1].Equals("green"))
-                {
-                    colour = Color.Green;
-                }
-                else if (splitUserInput[1].Equals("red"))
-                {
-                    colour = Color.Red;
 
-                }
-                else if (splitUserInput[1].Equals("orange"))
-                {
+            switch (inputColour)
+            {
+                case "green":
+                    colour = Color.Green;
+                    break;
+                case "red":
+                    colour = Color.Red;
+                    break;
+                case "orange":
                     colour = Color.Orange;
-                }
-                else if (splitUserInput[1].Equals("blue"))
-                {
+                    break;
+                case "blue":
                     colour = Color.RoyalBlue;
-                }
-                else
-                {
+                    break;
+                default:
                     throw new ArgumentException("Invalid parameter");
-                }
             }
         }
 

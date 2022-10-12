@@ -19,22 +19,23 @@ namespace ASE_Assignment
         public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(" ");
+            string[] userInputParameters = splitUserInput[1].Split(",");
 
-            if (splitUserInput.Length == 3)
+            if (splitUserInput.Length != 2 || userInputParameters.Length !=2)
+            {
+                throw new ArgumentException("Number of parameters is incorrect");
+            }
+            else
             {
                 try
                 {
-                    ParameterList.Add(Int32.Parse(splitUserInput[1]));
-                    ParameterList.Add(Int32.Parse(splitUserInput[2]));
+                    ParameterList.Add(Int32.Parse(userInputParameters[0]));
+                    ParameterList.Add(Int32.Parse(userInputParameters[1]));
                 }
                 catch (ArgumentException e)
                 {
                     throw new ArgumentException("Invalid parameters", e);
                 }
-            }
-            else
-            {
-                throw new ArgumentException("Number of parameters is incorrect");
             }
         }
 
