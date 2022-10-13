@@ -23,7 +23,8 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 2)
             {
-                throw new ArgumentException("Number of parameters is incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
             }
 
             if (splitUserInput[1].Equals("on") || splitUserInput[1].Equals("off"))
@@ -32,12 +33,21 @@ namespace ASE_Assignment
             }
             else
             {
-                throw new ArgumentException("Invalid parameter");
+                Errors.Add(InvalidTypeOfParameters);
             }
         }
 
         public override void Operation()
         {
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             if (shapeFill.Equals("on"))
             {
                 drawingCanvas.HasShapeFilled = true;

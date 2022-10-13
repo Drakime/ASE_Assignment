@@ -15,7 +15,7 @@ namespace ASE_Assignment
         public Circle(Canvas canvas, string userInput)
         {
             Name = "circle";
-            drawingCanvas = canvas;
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
         
@@ -25,24 +25,31 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 2)
             {
-                throw new ArgumentException("Number of parameters are incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+            
+            if (Int32.TryParse(splitUserInput[1], out int parsedRadius))
+            {
+                radius = parsedRadius;
             }
             else
             {
-                try
-                {
-                    radius = Int32.Parse(splitUserInput[1]);
-                }
-                catch (ArgumentException e)
-                {
-                    throw new ArgumentException("Invalid parameters", e);
-                }
+                Errors.Add(InvalidTypeOfParameters);
             }
         }
 
         public override void Operation()
         {
-            int[] parameters = ParameterList.ToArray();
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
 
             if (drawingCanvas.HasShapeFilled == false)

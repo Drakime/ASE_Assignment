@@ -8,15 +8,28 @@ namespace ASE_Assignment
 {
     public abstract class Command
     {
+        private const string invalidTypeOfParameters = "Parameter types are invalid\r\n";
+        private const string invalidNumberOfParameters = "Number of parameters are incorrect\r\n";
+
         private string name = "";
         private string userInput = "";
         private List<int> parameterList = new List<int>();
-        protected Canvas drawingCanvas;
-        private Color toolColour = new Color();
+        public Canvas drawingCanvas;
+        List<string> errors = new List<string>();
 
         public abstract void ParseParameters(string userInput);
 
         public abstract void Operation();
+
+        public string InvalidTypeOfParameters
+        {
+            get { return invalidTypeOfParameters; }
+        }
+
+        public string InvalidNumberOfParameters
+        {
+            get { return invalidNumberOfParameters; }
+        }
 
         public string Name
         {
@@ -36,16 +49,16 @@ namespace ASE_Assignment
             set { parameterList = value; }
         }
 
-        protected Canvas DrawingCanvas
+        public Canvas DrawingCanvas
         {
             get { return drawingCanvas; }
             set { drawingCanvas = value; }
         }
 
-        private Color ToolColour
+        public List<string> Errors
         {
-            get { return toolColour; }
-            set { toolColour = value; }
+            get { return errors; }
+            set { errors = value; }
         }
     }
 }

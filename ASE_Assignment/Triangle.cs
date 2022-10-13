@@ -25,43 +25,54 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 4)
             {
-                throw new ArgumentException("Number of parameters are incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
             }
 
+            //
             foreach (string parameter in splitUserInput.Skip(1))
             {
                 string[] splitParameter = parameter.Split(",");
 
                 for (int i = 0; i < splitParameter.Length; i++)
                 {
-                    splitPoints.Add(Int32.Parse(splitParameter[i]));
+                    if (Int32.TryParse(splitParameter[i], out int result))
+                    {
+                        splitPoints.Add(result);
+                    }
+                    else
+                    {
+                        Errors.Add(InvalidTypeOfParameters);
+                        return;
+                    }
                 }
             }
 
             if (splitPoints.Count != 6)
             {
-                throw new ArgumentException("Invalid parameters");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
             }
-            else
-            {
-                try
-                {
-                    Point pt1 = new Point(splitPoints[0], splitPoints[1]);
-                    Point pt2 = new Point(splitPoints[2], splitPoints[3]);
-                    Point pt3 = new Point(splitPoints[4], splitPoints[5]);
-                    points.Add(pt1);
-                    points.Add(pt2);
-                    points.Add(pt3);
-                }
-                catch (ArgumentException e)
-                {
-                    throw new ArgumentException("Invalid parameters", e);
-                }
-            }
+
+            Point pt1 = new Point(splitPoints[0], splitPoints[1]);
+            Point pt2 = new Point(splitPoints[2], splitPoints[3]);
+            Point pt3 = new Point(splitPoints[4], splitPoints[5]);
+            points.Add(pt1);
+            points.Add(pt2);
+            points.Add(pt3);
         }
 
         public override void Operation()
         {
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             Point[] pointsArray = points.ToArray();
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
 

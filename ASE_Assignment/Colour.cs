@@ -24,7 +24,8 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 2)
             {
-                throw new ArgumentException("Number of parameters is incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
             }
 
             switch (inputColour)
@@ -42,12 +43,22 @@ namespace ASE_Assignment
                     colour = Color.RoyalBlue;
                     break;
                 default:
-                    throw new ArgumentException("Invalid parameter");
+                    Errors.Add(InvalidTypeOfParameters);
+                    return;
             }
         }
 
         public override void Operation()
         {
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             drawingCanvas.ToolColour = colour;
         }
     }

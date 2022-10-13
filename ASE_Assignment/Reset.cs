@@ -21,12 +21,22 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 1)
             {
-                throw new ArgumentException("Command does not require parameters");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
             }
         }
 
         public override void Operation()
         {
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
 
             drawingCanvas.PointX = 0;

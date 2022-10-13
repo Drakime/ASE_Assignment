@@ -8,6 +8,9 @@ namespace ASE_Assignment
 {
     public class MoveTo : Command
     {
+        int x;
+        int y;
+
         public MoveTo(Canvas canvas, string userInput)
         {
             Name = "moveto";
@@ -23,27 +26,35 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 2 || userInputParameters.Length != 2)
             {
-                throw new ArgumentException("Number of parameters is incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+
+            if (Int32.TryParse(userInputParameters[0], out int parsedX)
+                && Int32.TryParse(userInputParameters[1], out int parsedY))
+            {
+                x = parsedX;
+                y = parsedY;
             }
             else
             {
-                try
-                {
-                    ParameterList.Add(Int32.Parse(userInputParameters[0]));
-                    ParameterList.Add(Int32.Parse(userInputParameters[1]));
-                }
-                catch (ArgumentException e)
-                {
-                    throw new ArgumentException("Invalid parameters", e);
-                }
+                Errors.Add(InvalidTypeOfParameters);
             }
         }
 
         public override void Operation()
         {
-            int[] parameters = ParameterList.ToArray();
-            drawingCanvas.PointX = parameters[0];
-            drawingCanvas.PointY = parameters[1];
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
+            drawingCanvas.PointX = x;
+            drawingCanvas.PointY = y;
         }
     }
 }

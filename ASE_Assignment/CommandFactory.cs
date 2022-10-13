@@ -35,7 +35,7 @@ namespace ASE_Assignment
                 case "fill":
                     return new Fill(canvas, userInput);
                 default:
-                    throw new ArgumentException("Command does not exist");
+                    return new CommandException();
             }
         }
     }

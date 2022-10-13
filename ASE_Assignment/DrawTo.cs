@@ -8,6 +8,9 @@ namespace ASE_Assignment
 {
     public class DrawTo : Command
     {
+        int x;
+        int y;
+
         public DrawTo(Canvas canvas, string userInput)
         {
             Name = "drawto";
@@ -21,31 +24,39 @@ namespace ASE_Assignment
             string[] splitUserInput = userInput.Split(" ");
             string[] userInputParameters = splitUserInput[1].Split(",");
 
-            if (splitUserInput.Length != 2 || userInputParameters.Length !=2)
+            if (splitUserInput.Length != 2 || userInputParameters.Length != 2)
             {
-                throw new ArgumentException("Number of parameters is incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+
+            if (Int32.TryParse(userInputParameters[0], out int parsedX)
+                && Int32.TryParse(userInputParameters[1], out int parsedY))
+            {
+                x = parsedX;
+                y = parsedY;
             }
             else
             {
-                try
-                {
-                    ParameterList.Add(Int32.Parse(userInputParameters[0]));
-                    ParameterList.Add(Int32.Parse(userInputParameters[1]));
-                }
-                catch (ArgumentException e)
-                {
-                    throw new ArgumentException("Invalid parameters", e);
-                }
+                Errors.Add(InvalidTypeOfParameters);
             }
         }
 
         public override void Operation()
         {
-            int[] parameters = ParameterList.ToArray();
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
             Pen pen = new Pen(drawingCanvas.ToolColour);
-            
-            g.DrawLine(pen, drawingCanvas.PointX, drawingCanvas.PointY, parameters[0], parameters[1]);
+
+            g.DrawLine(pen, drawingCanvas.PointX, drawingCanvas.PointY, x, y);
 
             pen.Dispose();
             g.Dispose();

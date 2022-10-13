@@ -8,10 +8,13 @@ namespace ASE_Assignment
 {
     public class Rectangle : Command
     {
+        int width;
+        int height;
+
         public Rectangle(Canvas canvas, string userInput)
         {
             Name = "rectangle";
-            drawingCanvas = canvas;
+            DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
 
@@ -22,37 +25,45 @@ namespace ASE_Assignment
 
             if (splitUserInput.Length != 2 || userInputParameters.Length != 2)
             {
-                throw new ArgumentException("Number of parameters are incorrect");
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+
+            if (Int32.TryParse(userInputParameters[0], out int parsedWidth)
+                && Int32.TryParse(userInputParameters[1], out int parsedHeight))
+            {
+                width = parsedWidth;
+                height = parsedHeight;
             }
             else
             {
-                try
-                {
-                    ParameterList.Add(Int32.Parse(userInputParameters[0]));
-                    ParameterList.Add(Int32.Parse(userInputParameters[1]));
-                }
-                catch (ArgumentException e)
-                {
-                    throw new ArgumentException("Invalid parameters", e);
-                }
+                Errors.Add(InvalidTypeOfParameters);
             }
         }
 
         public override void Operation()
         {
-            int[] parameters = ParameterList.ToArray();
+            if (Errors.Count != 0)
+            {
+                foreach (string error in Errors)
+                {
+                    MessageBox.Show(error);
+                    return;
+                }
+            }
+
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
 
             if (drawingCanvas.HasShapeFilled == false)
             {
                 Pen pen = new Pen(drawingCanvas.ToolColour);
-                g.DrawRectangle(pen, drawingCanvas.PointX, drawingCanvas.PointY, parameters[0], parameters[1]);
+                g.DrawRectangle(pen, drawingCanvas.PointX, drawingCanvas.PointY, width, height);
                 pen.Dispose();
             }
             else
             {
                 SolidBrush brush = new SolidBrush(drawingCanvas.ToolColour);
-                g.FillRectangle(brush, drawingCanvas.PointX, drawingCanvas.PointY, parameters[0], parameters[1]);
+                g.FillRectangle(brush, drawingCanvas.PointX, drawingCanvas.PointY, width, height);
                 brush.Dispose();
             }
 
