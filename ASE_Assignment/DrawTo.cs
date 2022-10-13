@@ -8,8 +8,8 @@ namespace ASE_Assignment
 {
     public class DrawTo : Command
     {
-        int x;
-        int y;
+        private int x;
+        private int y;
 
         public DrawTo(Canvas canvas, string userInput)
         {
@@ -60,6 +60,18 @@ namespace ASE_Assignment
 
             pen.Dispose();
             g.Dispose();
+        }
+
+        // For unit tests
+        public int X
+        {
+            get { return x; }
+        }
+
+        // For unit tests
+        public int Y
+        {
+            get { return y; }
         }
     }
 }

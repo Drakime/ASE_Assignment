@@ -8,8 +8,8 @@ namespace ASE_Assignment
 {
     public class MoveTo : Command
     {
-        int x;
-        int y;
+        private int x;
+        private int y;
 
         public MoveTo(Canvas canvas, string userInput)
         {
@@ -55,6 +55,18 @@ namespace ASE_Assignment
 
             drawingCanvas.PointX = x;
             drawingCanvas.PointY = y;
+        }
+
+        // For unit tests
+        public int X
+        {
+            get { return x; }
+        }
+
+        // For unit tests
+        public int Y
+        {
+            get { return y; }
         }
     }
 }

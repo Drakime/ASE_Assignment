@@ -8,7 +8,7 @@ namespace ASE_Assignment
 {
     public class Colour : Command
     {
-        Color colour;
+        private Color toolColour;
         
         public Colour(Canvas canvas, string userInput)
         {
@@ -31,16 +31,16 @@ namespace ASE_Assignment
             switch (inputColour)
             {
                 case "green":
-                    colour = Color.Green;
+                    toolColour = Color.Green;
                     break;
                 case "red":
-                    colour = Color.Red;
+                    toolColour = Color.Red;
                     break;
                 case "orange":
-                    colour = Color.Orange;
+                    toolColour = Color.Orange;
                     break;
                 case "blue":
-                    colour = Color.RoyalBlue;
+                    toolColour = Color.RoyalBlue;
                     break;
                 default:
                     Errors.Add(InvalidTypeOfParameters);
@@ -59,7 +59,13 @@ namespace ASE_Assignment
                 }
             }
 
-            drawingCanvas.ToolColour = colour;
+            drawingCanvas.ToolColour = ToolColour;
+        }
+
+        // For unit tests
+        public Color ToolColour
+        {
+            get { return toolColour; }
         }
     }
 }

@@ -38,7 +38,7 @@ namespace ASE_Assignment
 
             foreach (string command in commands)
             {
-                Command action = factory.Command(canvas, command);
+                factory.Command(canvas, command);
                 drawingCanvas.Image = canvas.Bitmap;
             }
 
@@ -51,7 +51,7 @@ namespace ASE_Assignment
             {
                 string userInput = commandLine.Text.Trim().ToLower();
 
-                Command action = factory.Command(canvas, userInput);
+                factory.Command(canvas, userInput);
                 drawingCanvas.Image = canvas.Bitmap;
                 commandLine.Clear();
             }

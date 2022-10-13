@@ -67,5 +67,11 @@ namespace ASE_Assignment
 
             g.Dispose();
         }
+
+        // For unit tests
+        public int Radius
+        {
+            get { return radius; }
+        }
     }
 }

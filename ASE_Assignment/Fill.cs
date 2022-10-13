@@ -8,7 +8,7 @@ namespace ASE_Assignment
 {
     public class Fill : Command
     {
-        string shapeFill;
+        private string shapeFill;
 
         public Fill(Canvas canvas, string userInput)
         {
@@ -56,6 +56,12 @@ namespace ASE_Assignment
             {
                 drawingCanvas.HasShapeFilled = false;
             }
+        }
+
+        // For unit tests
+        public string ShapeFill
+        {
+            get { return shapeFill; }
         }
     }
 }

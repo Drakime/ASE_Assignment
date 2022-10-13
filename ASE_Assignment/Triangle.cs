@@ -91,5 +91,11 @@ namespace ASE_Assignment
 
             g.Dispose();
         }
+
+        // For unit tests
+        public List<Point> Points
+        {
+            get { return points; }
+        }
     }
 }

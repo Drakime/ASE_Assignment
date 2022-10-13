@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
-    public class Rectangle : Command
+    public class Rect : Command
     {
-        int width;
-        int height;
+        private int width;
+        private int height;
 
-        public Rectangle(Canvas canvas, string userInput)
+        public Rect(Canvas canvas, string userInput)
         {
             Name = "rectangle";
             DrawingCanvas = canvas;
@@ -21,9 +21,16 @@ namespace ASE_Assignment
         public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(" ");
+
+            if (splitUserInput.Length != 2)
+            {
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+
             string[] userInputParameters = splitUserInput[1].Split(",");
 
-            if (splitUserInput.Length != 2 || userInputParameters.Length != 2)
+            if (userInputParameters.Length != 2)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
@@ -68,6 +75,18 @@ namespace ASE_Assignment
             }
 
             g.Dispose();
+        }
+
+        // For unit tests
+        public int Width
+        {
+            get { return width; }
+        }
+
+        // For unit tests
+        public int Height
+        {
+            get { return height; }
         }
     }
 }
