@@ -22,7 +22,7 @@ namespace ASE_Assignment
                     return new DrawTo(canvas, userInput);
                 case "circle":
                     return new Circle(canvas, userInput);
-                case "rectangle":
+                case "rect":
                     return new Rect(canvas, userInput);
                 case "triangle":
                     return new Triangle(canvas, userInput);

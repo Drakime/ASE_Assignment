@@ -19,9 +19,9 @@ namespace ASE_AssignmentTests
         /// <param name="expectedWidth">The expected width to be stored</param>
         /// <param name="expectedHeight">The expected height to be stored</param>
         [DataTestMethod]
-        [DataRow("rectangle 45,45", 45, 45)]
-        [DataRow("rectangle 150,72", 150, 72)]
-        [DataRow("rectangle 74,209", 74, 209)]
+        [DataRow("rect 45,45", 45, 45)]
+        [DataRow("rect 150,72", 150, 72)]
+        [DataRow("rect 74,209", 74, 209)]
         public void Rectangle_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expectedWidth, int expectedHeight)
         {
             // Arrange
