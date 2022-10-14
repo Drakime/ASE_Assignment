@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that moves the position of a tool.
+    /// </summary>
     public class MoveTo : Command
     {
+        /// <summary>
+        /// The x-coordinate of the tool.
+        /// </summary>
         private int x;
+        /// <summary>
+        /// The y-coordinate of the tool.
+        /// </summary>
         private int y;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="canvas">The canvas of the current application instance.</param>
+        /// <param name="userInput">The input of the user.</param>
         public MoveTo(Canvas canvas, string userInput)
         {
             Name = "moveto";
@@ -19,6 +33,14 @@ namespace ASE_Assignment
             ParseParameters(userInput);
         }
 
+        /// <summary>
+        /// Parses the parameter from the user input and sets the
+        /// class attribute accordingly.
+        /// 
+        /// If criteria is not met, adds to a list collection named
+        /// 'errors'.
+        /// </summary>
+        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(" ");
@@ -42,6 +64,12 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Outputs an error message if there are any.
+        /// 
+        /// Otherwise, updates the 'pointX' and 'pointY'
+        /// attributes of the canvas.
+        /// </summary>
         public override void Operation()
         {
             if (Errors.Count != 0)

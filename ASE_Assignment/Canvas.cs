@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that stores details of the current canvas drawing area.
+    /// </summary>
     public class Canvas
     {
         private Bitmap bitmap;

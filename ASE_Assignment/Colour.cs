@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that changes the colour of the drawing tool.
+    /// </summary>
     public class Colour : Command
     {
         private Color toolColour;
         
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="canvas">The canvas of the current application instance.</param>
+        /// <param name="userInput">The input of the user.</param>
         public Colour(Canvas canvas, string userInput)
         {
             Name = "colour";
@@ -17,6 +25,14 @@ namespace ASE_Assignment
             ParseParameters(userInput);
         }
 
+        /// <summary>
+        /// Parses the parameter from the user input and sets the
+        /// class attribute accordingly.
+        /// 
+        /// If criteria is not met, adds to a list collection named
+        /// 'errors'.
+        /// </summary>
+        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void ParseParameters(string userInput)
         {
             string[] splitUserInput = userInput.Split(' ');
@@ -48,6 +64,12 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Outputs an error message if there are any.
+        /// 
+        /// Otherwise, updates the 'toolColour' attribute
+        /// of the canvas.
+        /// </summary>
         public override void Operation()
         {
             if (Errors.Count != 0)

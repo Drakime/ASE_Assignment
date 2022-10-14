@@ -8,17 +8,28 @@ namespace ASE_Assignment
 {
     public abstract class CommandFactoryFactory
     {
-        public Command Command(Canvas canvas, string userInput)
+        /// <summary>
+        /// Requests a command object and executes its operation.
+        /// </summary>
+        /// <param name="canvas">The canvas that the command affects.</param>
+        /// <param name="userInput">The input of the user.</param>
+        /// <returns></returns>
+        public void Command(Canvas canvas, string userInput)
         {
             Command command;
 
             command = CreateCommand(canvas, userInput);
 
             command.Operation();
-
-            return command;
         }
 
+        /// <summary>
+        /// Returns a command object, depending on the
+        /// command the user input.
+        /// </summary>
+        /// <param name="canvas">The canvas that the command affects.</param>
+        /// <param name="userInput"></param>
+        /// <returns></returns>
         public abstract Command CreateCommand(Canvas canvas, string userInput);
     }
 }
