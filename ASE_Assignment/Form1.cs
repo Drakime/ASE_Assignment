@@ -33,16 +33,7 @@ namespace ASE_Assignment
 
         private void runButton_Click(object sender, EventArgs e)
         {
-            string userInput = programTextBox.Text.Trim().ToLower();
-            string[] commands = Regex.Split(userInput, @"\r\n");
-
-            foreach (string command in commands)
-            {
-                factory.Command(canvas, command);
-                drawingCanvas.Image = canvas.Bitmap;
-            }
-
-            programTextBox.Clear();
+            factory.Command(canvas, "run");
         }
 
         private void commandLine_KeyPress(object sender, KeyPressEventArgs e)

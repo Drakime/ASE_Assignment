@@ -34,6 +34,8 @@ namespace ASE_Assignment
                     return new Colour(canvas, userInput);
                 case "fill":
                     return new Fill(canvas, userInput);
+                case "run":
+                    return new Run(canvas, userInput);
                 default:
                     return new CommandException();
             }
