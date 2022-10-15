@@ -23,6 +23,7 @@ namespace ASE_Assignment
         public Run(Canvas canvas, string userInput)
         {
             Name = "run";
+            UserInput = userInput;
             DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
@@ -54,11 +55,9 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                foreach (string error in Errors)
-                {
-                    MessageBox.Show(error);
-                    return;
-                }
+                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console.PrintErrorToConsole();
+                return;
             }
 
             TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;

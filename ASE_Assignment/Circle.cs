@@ -26,6 +26,7 @@ namespace ASE_Assignment
         public Circle(Canvas canvas, string userInput)
         {
             Name = "circle";
+            UserInput = userInput;
             DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
@@ -42,7 +43,7 @@ namespace ASE_Assignment
         {
             string[] splitUserInput = userInput.Split(" ");
 
-            if (splitUserInput.Length != 2)
+            if (splitUserInput.Length != 2 || Array.IndexOf(splitUserInput, ",") != 1)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
@@ -68,11 +69,9 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                foreach (string error in Errors)
-                {
-                    MessageBox.Show(error);
-                    return;
-                }
+                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console.PrintErrorToConsole();
+                return;
             }
 
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);

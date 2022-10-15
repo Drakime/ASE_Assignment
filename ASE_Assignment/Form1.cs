@@ -31,6 +31,7 @@ namespace ASE_Assignment
             }
         }
 
+        // Graphical button for running a program
         private void runButton_Click(object sender, EventArgs e)
         {
             factory.Command(canvas, "run");
@@ -48,6 +49,7 @@ namespace ASE_Assignment
             }
         }
 
+        // MenuStrip - ToolStrip items
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             factory.Command(canvas, "load");

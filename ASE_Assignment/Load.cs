@@ -20,6 +20,7 @@ namespace ASE_Assignment
         public Load(string userInput)
         {
             Name = "load";
+            UserInput = userInput;
             ParseParameters(userInput);
         }
 
@@ -51,11 +52,9 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                foreach (string error in Errors)
-                {
-                    MessageBox.Show(error);
-                    return;
-                }
+                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console.PrintErrorToConsole();
+                return;
             }
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())

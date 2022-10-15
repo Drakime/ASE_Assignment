@@ -19,6 +19,7 @@ namespace ASE_Assignment
         public Reset(Canvas canvas, string userInput)
         {
             Name = "reset";
+            UserInput = userInput;
             DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
@@ -51,11 +52,9 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                foreach (string error in Errors)
-                {
-                    MessageBox.Show(error);
-                    return;
-                }
+                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console.PrintErrorToConsole();
+                return;
             }
 
             Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);

@@ -41,7 +41,7 @@ namespace ASE_Assignment
                 case "load":
                     return new Load(userInput);
                 default:
-                    return new CommandException();
+                    return new CommandException(commandType);
             }
         }
     }

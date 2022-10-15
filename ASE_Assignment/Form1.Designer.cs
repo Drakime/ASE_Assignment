@@ -37,13 +37,15 @@
             this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.console = new System.Windows.Forms.TextBox();
+            this.consoleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // commandLine
             // 
-            this.commandLine.Location = new System.Drawing.Point(12, 439);
+            this.commandLine.Location = new System.Drawing.Point(12, 626);
             this.commandLine.Name = "commandLine";
             this.commandLine.Size = new System.Drawing.Size(316, 23);
             this.commandLine.TabIndex = 0;
@@ -100,29 +102,53 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // console
+            // 
+            this.console.BackColor = System.Drawing.SystemColors.Desktop;
+            this.console.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.console.ForeColor = System.Drawing.SystemColors.Window;
+            this.console.Location = new System.Drawing.Point(12, 492);
+            this.console.Multiline = true;
+            this.console.Name = "console";
+            this.console.ReadOnly = true;
+            this.console.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.console.Size = new System.Drawing.Size(776, 128);
+            this.console.TabIndex = 5;
+            // 
+            // consoleLabel
+            // 
+            this.consoleLabel.AutoSize = true;
+            this.consoleLabel.Location = new System.Drawing.Point(12, 474);
+            this.consoleLabel.Name = "consoleLabel";
+            this.consoleLabel.Size = new System.Drawing.Size(50, 15);
+            this.consoleLabel.TabIndex = 6;
+            this.consoleLabel.Text = "Console";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 470);
+            this.ClientSize = new System.Drawing.Size(800, 661);
+            this.Controls.Add(this.consoleLabel);
+            this.Controls.Add(this.console);
             this.Controls.Add(this.drawingCanvas);
             this.Controls.Add(this.runButton);
             this.Controls.Add(this.programTextBox);
@@ -150,5 +176,7 @@
         private ToolStripMenuItem openToolStripMenuItem;
         private ToolStripMenuItem saveToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
+        private TextBox console;
+        private Label consoleLabel;
     }
 }

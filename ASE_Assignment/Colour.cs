@@ -21,6 +21,7 @@ namespace ASE_Assignment
         public Colour(Canvas canvas, string userInput)
         {
             Name = "colour";
+            UserInput = userInput;
             DrawingCanvas = canvas;
             ParseParameters(userInput);
         }
@@ -74,11 +75,9 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                foreach (string error in Errors)
-                {
-                    MessageBox.Show(error);
-                    return;
-                }
+                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console.PrintErrorToConsole();
+                return;
             }
 
             drawingCanvas.ToolColour = ToolColour;

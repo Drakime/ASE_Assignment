@@ -20,7 +20,9 @@ namespace ASE_Assignment
         /// <summary>
         /// The collection of errors in a command.
         /// </summary>
-        List<string> errors = new List<string>();
+        private List<string> errors = new List<string>();
+
+        private ConsoleDisplayError console;
 
         /// <summary>
         /// Parses the provided user input, to retrieve
@@ -98,6 +100,12 @@ namespace ASE_Assignment
         {
             get { return errors; }
             set { errors = value; }
+        }
+
+        public ConsoleDisplayError Console
+        {
+            get { return console; }
+            set { console = value; }
         }
     }
 }
