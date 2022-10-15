@@ -36,6 +36,10 @@ namespace ASE_Assignment
                     return new Fill(canvas, userInput);
                 case "run":
                     return new Run(canvas, userInput);
+                case "save":
+                    return new Save(userInput);
+                case "load":
+                    return new Load(userInput);
                 default:
                     return new CommandException();
             }
