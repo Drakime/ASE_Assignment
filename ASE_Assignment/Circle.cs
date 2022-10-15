@@ -43,7 +43,7 @@ namespace ASE_Assignment
         {
             string[] splitUserInput = userInput.Split(" ");
 
-            if (splitUserInput.Length != 2 || Array.IndexOf(splitUserInput, ",") != 1)
+            if (splitUserInput.Length != 2)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
