@@ -11,37 +11,40 @@ namespace ASE_Assignment
     {
         public override Command CreateCommand(Canvas canvas, string userInput)
         {
-            string[] command = userInput.Split(" ");
-            string commandType = command[0];
+            // string[] command = userInput.Split(" ");
+            // string commandType = command[0];
 
-            switch (commandType)
+            string command = Parser.ParseCommand(userInput);
+            List<string> parameters = Parser.ParseParameters(userInput);
+
+            switch (command)
             {
                 case "moveto":
-                    return new MoveTo(canvas, userInput);
+                    return new MoveTo(canvas, parameters);
                 case "drawto":
-                    return new DrawTo(canvas, userInput);
+                    return new DrawTo(canvas, parameters);
                 case "circle":
-                    return new Circle(canvas, userInput);
+                    return new Circle(canvas, parameters);
                 case "rect":
-                    return new Rect(canvas, userInput);
+                    return new Rect(canvas, parameters);
                 case "triangle":
-                    return new Triangle(canvas, userInput);
+                    return new Triangle(canvas, parameters);
                 case "clear":
-                    return new Clear(canvas, userInput);
+                    return new Clear(canvas, parameters);
                 case "reset":
-                    return new Reset(canvas, userInput);
+                    return new Reset(canvas, parameters);
                 case "pen":
-                    return new Colour(canvas, userInput);
+                    return new Colour(canvas, parameters);
                 case "fill":
-                    return new Fill(canvas, userInput);
+                    return new Fill(canvas, parameters);
                 case "run":
-                    return new Run(canvas, userInput);
+                    return new Run(canvas, parameters);
                 case "save":
-                    return new Save(userInput);
+                    return new Save(parameters);
                 case "load":
-                    return new Load(userInput);
+                    return new Load(parameters);
                 default:
-                    return new CommandException(commandType);
+                    return new CommandException(command);
             }
         }
     }

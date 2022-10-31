@@ -13,8 +13,7 @@ namespace ASE_Assignment
         private const string invalidNumberOfParameters = "Number of parameters are incorrect\r\n";
 
         private string name = "";
-        private string userInput = "";
-        private List<int> parameterList = new List<int>();
+        private List<string> parameters = new List<string>();
         public Canvas drawingCanvas;
 
         /// <summary>
@@ -29,7 +28,7 @@ namespace ASE_Assignment
         /// command parameters.
         /// </summary>
         /// <param name="userInput">The input of the user.</param>
-        public abstract void ParseParameters(string userInput);
+        public abstract void VerifyParameters();
 
         /// <summary>
         /// The action of the command.
@@ -69,19 +68,10 @@ namespace ASE_Assignment
         /// <summary>
         /// Gets or sets the user input.
         /// </summary>
-        public string UserInput
+        public List<string> Parameters
         {
-            get { return userInput; }
-            set { userInput = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the list of parameters.
-        /// </summary>
-        public List<int> ParameterList
-        {
-            get { return parameterList; }
-            set { parameterList = value; }
+            get { return parameters; }
+            set { parameters = value; }
         }
 
         /// <summary>

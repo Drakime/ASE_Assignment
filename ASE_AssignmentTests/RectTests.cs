@@ -11,6 +11,18 @@ namespace ASE_AssignmentTests
     [TestClass]
     public class RectTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that the arguments of a correct 'Rect' command input
         /// are stored correctly as as 'width' and 'height' within the instanced class.
@@ -25,11 +37,12 @@ namespace ASE_AssignmentTests
         public void Rectangle_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expectedWidth, int expectedHeight)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Rect rectangle = new Rect(canvas, userInput);
+            Rect rectangle = new Rect(canvas, parameters);
 
             // Assert
             Assert.AreEqual(expectedWidth, rectangle.Width);
@@ -49,11 +62,12 @@ namespace ASE_AssignmentTests
         public void Rect_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Rect rectangle = new Rect(canvas, userInput);
+            Rect rectangle = new Rect(canvas, parameters);
 
             // Assert
             Assert.IsTrue(rectangle.Errors.Count != 0);
@@ -72,11 +86,12 @@ namespace ASE_AssignmentTests
         public void Rect_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Rect rectangle = new Rect(canvas, userInput);
+            Rect rectangle = new Rect(canvas, parameters);
 
             // Assert
             Assert.IsTrue(rectangle.Errors.Count != 0);

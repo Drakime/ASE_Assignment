@@ -18,12 +18,12 @@ namespace ASE_Assignment
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
         /// <param name="userInput">The input of the user.</param>
-        public Fill(Canvas canvas, string userInput)
+        public Fill(Canvas canvas, List<string> parameters)
         {
             Name = "fill";
-            UserInput = userInput;
+            Parameters = parameters;
             DrawingCanvas = canvas;
-            ParseParameters(userInput);
+            VerifyParameters();
         }
 
         /// <summary>
@@ -34,19 +34,19 @@ namespace ASE_Assignment
         /// 'errors'.
         /// </summary>
         /// <param name="userInput">The input of the user to be parsed.</param>
-        public override void ParseParameters(string userInput)
+        public override void VerifyParameters()
         {
-            string[] splitUserInput = userInput.Split(" ");
+            
 
-            if (splitUserInput.Length != 2)
+            if (Parameters.Count != 1)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
             }
 
-            if (splitUserInput[1].Equals("on") || splitUserInput[1].Equals("off"))
+            if (Parameters[0].Equals("on") || Parameters[0].Equals("off"))
             {
-                shapeFill = splitUserInput[1];
+                shapeFill = Parameters[0];
             }
             else
             {
@@ -64,7 +64,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
                 Console.PrintErrorToConsole();
                 return;
             }

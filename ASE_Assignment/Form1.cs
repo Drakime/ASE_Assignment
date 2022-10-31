@@ -2,11 +2,17 @@ using System.Text.RegularExpressions;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that displays the application as a form.
+    /// </summary>
     public partial class Form1 : Form
     {
         Canvas canvas;
         CommandFactoryFactory factory;
 
+        /// <summary>
+        /// Initialises an instance of the form.    
+        /// </summary>
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +24,11 @@ namespace ASE_Assignment
             factory = new CommandFactory();
         }
 
-        // Disables run button if program textbox is empty
+        /// <summary>
+        /// An event listener that disables the "run" button if the program textbox is empty
+        /// </summary>
+        /// <param name="sender">The event source.</param>
+        /// <param name="e">An instance of the event data.</param>
         private void programTextBox_TextChanged(object sender, EventArgs e)
         {
             if (programTextBox.Text.Equals(""))
@@ -31,12 +41,21 @@ namespace ASE_Assignment
             }
         }
 
-        // Graphical button for running a program
+        /// <summary>
+        /// An event listener that executes the "run" command if the button is clicked.
+        /// </summary>
+        /// <param name="sender">The event source.</param>
+        /// <param name="e">An instance of the event data.</param>
         private void runButton_Click(object sender, EventArgs e)
         {
             factory.Command(canvas, "run");
         }
 
+        /// <summary>
+        /// An event listener that executes the command in the command line textbox.
+        /// </summary>
+        /// <param name="sender">The event source.</param>
+        /// <param name="e">An instance of the event data (the "enter" key).</param>
         private void commandLine_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (Char)Keys.Enter)

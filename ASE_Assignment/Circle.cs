@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Policy;
@@ -16,19 +17,19 @@ namespace ASE_Assignment
         /// <summary>
         /// The radius of the circle.
         /// </summary>
-        int radius;
+        private int radius;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
         /// <param name="userInput">The input of the user.</param>
-        public Circle(Canvas canvas, string userInput)
+        public Circle(Canvas canvas, List<string> parameters)
         {
             Name = "circle";
-            UserInput = userInput;
             DrawingCanvas = canvas;
-            ParseParameters(userInput);
+            Parameters = parameters;
+            VerifyParameters();
         }
         
         /// <summary>
@@ -39,17 +40,15 @@ namespace ASE_Assignment
         /// 'errors'.
         /// </summary>
         /// <param name="userInput">The input of the user to be parsed.</param>
-        public override void ParseParameters(string userInput)
+        public override void VerifyParameters()
         {
-            string[] splitUserInput = userInput.Split(" ");
-
-            if (splitUserInput.Length != 2)
+            if (Parameters.Count != 1)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
             }
             
-            if (Int32.TryParse(splitUserInput[1], out int parsedRadius))
+            if (Int32.TryParse(Parameters[0], out int parsedRadius))
             {
                 radius = parsedRadius;
             }
@@ -69,7 +68,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
                 Console.PrintErrorToConsole();
                 return;
             }

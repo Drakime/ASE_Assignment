@@ -27,12 +27,12 @@ namespace ASE_Assignment
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
         /// <param name="userInput">The input of the user.</param>
-        public Triangle(Canvas canvas, string userInput)
+        public Triangle(Canvas canvas, List<string> parameters)
         {
             Name = "triangle";
-            UserInput = userInput;
+            Parameters = parameters;
             DrawingCanvas = canvas;
-            ParseParameters(userInput);
+            VerifyParameters();
         }
 
         /// <summary>
@@ -43,19 +43,17 @@ namespace ASE_Assignment
         /// 'errors'.
         /// </summary>
         /// <param name="userInput">The input of the user to be parsed.</param>
-        public override void ParseParameters(string userInput)
+        public override void VerifyParameters()
         {
-            string[] splitUserInput = userInput.Split(" ");
-
-            // Checks that the split string has 4 tokens
-            if (splitUserInput.Length != 4)
+            // Checks that the split string has 3 tokens
+            if (Parameters.Count != 3)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
             }
 
             // Split the points by a comma, and add to a list for integers
-            foreach (string parameter in splitUserInput.Skip(1))
+            foreach (string parameter in Parameters)
             {
                 string[] splitParameter = parameter.Split(",");
 
@@ -99,7 +97,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
                 Console.PrintErrorToConsole();
                 return;
             }

@@ -11,6 +11,18 @@ namespace ASE_AssignmentTests
     [TestClass]
     public class ResetTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that canvas attributes are reset to 0
         /// with a correct 'Reset' command input.
@@ -19,12 +31,14 @@ namespace ASE_AssignmentTests
         public void Reset_SetsCanvasCoordinates_WhenExecutingOperation()
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
             string userInput = "reset";
+            parameters = Parser.ParseParameters(userInput);
+
 
             // Act
-            Reset reset = new Reset(canvas, userInput);
+            Reset reset = new Reset(canvas, parameters);
 
             // Assert
             Assert.AreEqual(0, canvas.PointX);
@@ -43,11 +57,13 @@ namespace ASE_AssignmentTests
         public void Reset_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
+
 
             // Act
-            Reset reset = new Reset(canvas, userInput);
+            Reset reset = new Reset(canvas, parameters);
 
             // Assert
             Assert.IsTrue(reset.Errors.Count != 0);

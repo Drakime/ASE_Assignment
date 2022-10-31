@@ -11,6 +11,18 @@ namespace ASE_AssignmentTests
     [TestClass]
     public class TriangleTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that the correct arguments are stored correctly
         /// in an instanced 'Triangle' class, following a correct input.
@@ -40,11 +52,12 @@ namespace ASE_AssignmentTests
             Point[] expectedPointsArray = {pt1, pt2, pt3};
 
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Triangle triangle = new Triangle(canvas, userInput);
+            Triangle triangle = new Triangle(canvas, parameters);
             Point[] actualPointsArray = triangle.Points.ToArray();
 
             // Assert
@@ -64,11 +77,12 @@ namespace ASE_AssignmentTests
         public void Triangle_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            Parser.ParseParameters(userInput);
 
             // Act
-            Triangle triangle = new Triangle(canvas, userInput);
+            Triangle triangle = new Triangle(canvas, parameters);
 
             // Assert
             Assert.IsTrue(triangle.Errors.Count != 0);
@@ -87,11 +101,12 @@ namespace ASE_AssignmentTests
         public void Triangle_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Triangle triangle = new Triangle(canvas, userInput);
+            Triangle triangle = new Triangle(canvas, parameters);
 
 
             // Assert

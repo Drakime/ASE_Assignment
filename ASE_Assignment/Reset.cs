@@ -16,12 +16,12 @@ namespace ASE_Assignment
         /// </summary>
         /// <param name="canvas">The canvas of the current application instance.</param>
         /// <param name="userInput">The input of the user.</param>
-        public Reset(Canvas canvas, string userInput)
+        public Reset(Canvas canvas, List<string> parameters)
         {
             Name = "reset";
-            UserInput = userInput;
+            Parameters = parameters;
             DrawingCanvas = canvas;
-            ParseParameters(userInput);
+            VerifyParameters();
         }
 
         /// <summary>
@@ -31,11 +31,11 @@ namespace ASE_Assignment
         /// 'errors'.
         /// </summary>
         /// <param name="userInput">The input of the user to be parsed.</param>
-        public override void ParseParameters(string userInput)
+        public override void VerifyParameters()
         {
-            string[] splitUserInput = userInput.Split(" ");
+            
 
-            if (splitUserInput.Length != 1)
+            if (Parameters.Count != 0)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
@@ -52,7 +52,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(UserInput, Errors);
+                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
                 Console.PrintErrorToConsole();
                 return;
             }

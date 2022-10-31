@@ -11,6 +11,18 @@ namespace ASE_AssignmentTests
     [TestClass]
     public class DrawToTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that the arguments of a correct 'DrawTo' command
         /// is stored correctly as an x and y coordinate within the
@@ -26,11 +38,13 @@ namespace ASE_AssignmentTests
         public void DrawTo_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expectedX, int expectedY)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
+            /*Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
-            
+            List<string> parameters = new List<string>();*/
+            parameters = Parser.ParseParameters(userInput);
+
             // Act
-            DrawTo drawto = new DrawTo(canvas, userInput);
+            DrawTo drawto = new DrawTo(canvas, parameters);
 
             // Assert
             Assert.AreEqual(expectedX, drawto.X);
@@ -49,11 +63,13 @@ namespace ASE_AssignmentTests
         public void DrawTo_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
+            /*Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
+            List<string> parameters = new List<string>();*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            MoveTo drawto = new MoveTo(canvas, userInput);
+            DrawTo drawto = new DrawTo(canvas, parameters);
 
             // Assert
             Assert.IsTrue(drawto.Errors.Count != 0);
@@ -65,17 +81,19 @@ namespace ASE_AssignmentTests
         /// </summary>
         /// <param name="userInput">An incorrect 'DrawTo' command input</param>
         [DataTestMethod]
-        [DataRow("moveto 48,x")]
-        [DataRow("moveto here,again")]
-        [DataRow("moveto fifty,5")]
+        [DataRow("drawto 48,x")]
+        [DataRow("drawto here,again")]
+        [DataRow("drawto fifty,5")]
         public void DrawTo_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
+            /*Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
+            List<string> parameters = new List<string>();*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            MoveTo drawto = new MoveTo(canvas, userInput);
+            DrawTo drawto = new DrawTo(canvas, parameters);
 
             // Assert
             Assert.IsTrue(drawto.Errors.Count != 0);

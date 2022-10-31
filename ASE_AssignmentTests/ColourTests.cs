@@ -31,11 +31,13 @@ namespace ASE_AssignmentTests
             // Arrange
             Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
+            List<string> parameters = new List<string>();
+            parameters = Parser.ParseParameters(userInput);
             // Add possible colours to array
             Color[] colourArray = { Color.Orange, Color.Red, Color.Green, Color.RoyalBlue };
 
             // Act
-            Colour toolColour = new Colour(canvas, userInput);
+            Colour toolColour = new Colour(canvas, parameters);
             toolColour.Operation();
 
             // Assert
@@ -57,9 +59,11 @@ namespace ASE_AssignmentTests
             // Arrange
             Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
+            List<string> parameters = new List<string>();
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Colour toolColour = new Colour(canvas, userInput);
+            Colour toolColour = new Colour(canvas, parameters);
 
             // Assert
             Assert.IsTrue(toolColour.Errors.Count != 0);
@@ -79,9 +83,11 @@ namespace ASE_AssignmentTests
             // Arrange
             Bitmap bitmap = new Bitmap(100, 100);
             Canvas canvas = new Canvas(bitmap);
+            List<string> parameters = new List<string>();
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Colour toolColour = new Colour(canvas, userInput);
+            Colour toolColour = new Colour(canvas, parameters);
 
             // Assert
             Assert.IsTrue(toolColour.Errors.Count != 0);

@@ -14,6 +14,18 @@ namespace ASE_AssignmentTests
     [TestClass]
     public class MoveToTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that the arguments of a correct 'MoveTo' command input
         /// are stored correctly as x and y coordinates within the instanced class.
@@ -28,11 +40,12 @@ namespace ASE_AssignmentTests
         public void MoveTo_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expectedX, int expectedY)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            MoveTo moveto = new MoveTo(canvas, userInput);
+            MoveTo moveto = new MoveTo(canvas, parameters);
             // Sets coordinates of canvas
             moveto.Operation();
             
@@ -56,11 +69,12 @@ namespace ASE_AssignmentTests
         public void MoveTo_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            MoveTo moveto = new MoveTo(canvas, userInput);
+            MoveTo moveto = new MoveTo(canvas, parameters);
 
             // Assert
             Assert.IsTrue(moveto.Errors.Count != 0);
@@ -79,11 +93,12 @@ namespace ASE_AssignmentTests
         public void MoveTo_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
+            /*Bitmap bitmap = new Bitmap(100, 100);
+            Canvas canvas = new Canvas(bitmap);*/
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
-            MoveTo moveto = new MoveTo(canvas, userInput);
+            MoveTo moveto = new MoveTo(canvas, parameters);
 
             // Assert
             Assert.IsTrue(moveto.Errors.Count != 0);

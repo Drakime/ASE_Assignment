@@ -22,7 +22,7 @@ namespace ASE_Assignment
             t.AppendText("'" + command + "'" + " command does not exist\r\n");
         }
 
-        public override void ParseParameters(string userInput)
+        public override void VerifyParameters()
         {
             return;
         }
