@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Circle' class.
+    /// </summary>
     [TestClass]
     public class CircleTests
     {
@@ -15,6 +18,9 @@ namespace ASE_AssignmentTests
         Canvas canvas;
         List<string> parameters;
 
+        /// <summary>
+        /// Instantiates a bitmap, canvas, and a list to store parameters.
+        /// </summary>
         [TestInitialize]
         public void SetUp()
         {
@@ -36,9 +42,6 @@ namespace ASE_AssignmentTests
         public void Circle_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expected)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -61,9 +64,6 @@ namespace ASE_AssignmentTests
         public void Circle_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -86,9 +86,6 @@ namespace ASE_AssignmentTests
         public void Circle_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act

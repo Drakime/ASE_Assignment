@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Triangle' class.
+    /// </summary>
     [TestClass]
     public class TriangleTests
     {
@@ -15,6 +18,9 @@ namespace ASE_AssignmentTests
         Canvas canvas;
         List<string> parameters;
 
+        /// <summary>
+        /// Instantiates a bitmap, canvas, and a list to store parameters.
+        /// </summary>
         [TestInitialize]
         public void SetUp()
         {
@@ -45,15 +51,13 @@ namespace ASE_AssignmentTests
             int pointX3, int pointY3
             )
         {
+            // Arrange
             // Expected values, as Point array
             Point pt1 = new Point(pointX1, pointY1);
             Point pt2 = new Point(pointX2, pointY2);
             Point pt3 = new Point(pointX3, pointY3);
-            Point[] expectedPointsArray = {pt1, pt2, pt3};
+            Point[] expectedPointsArray = { pt1, pt2, pt3 };
 
-            // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -77,9 +81,7 @@ namespace ASE_AssignmentTests
         public void Triangle_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
-            Parser.ParseParameters(userInput);
+            parameters = Parser.ParseParameters(userInput);
 
             // Act
             Triangle triangle = new Triangle(canvas, parameters);
@@ -101,13 +103,10 @@ namespace ASE_AssignmentTests
         public void Triangle_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
             Triangle triangle = new Triangle(canvas, parameters);
-
 
             // Assert
             Assert.IsTrue(triangle.Errors.Count != 0);

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Reset' class.
+    /// </summary>
     [TestClass]
     public class ResetTests
     {
@@ -15,6 +18,9 @@ namespace ASE_AssignmentTests
         Canvas canvas;
         List<string> parameters;
 
+        /// <summary>
+        /// Instantiates a bitmap, canvas, and a list to store parameters.
+        /// </summary>
         [TestInitialize]
         public void SetUp()
         {
@@ -31,11 +37,8 @@ namespace ASE_AssignmentTests
         public void Reset_SetsCanvasCoordinates_WhenExecutingOperation()
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             string userInput = "reset";
             parameters = Parser.ParseParameters(userInput);
-
 
             // Act
             Reset reset = new Reset(canvas, parameters);
@@ -57,10 +60,7 @@ namespace ASE_AssignmentTests
         public void Reset_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
-
 
             // Act
             Reset reset = new Reset(canvas, parameters);

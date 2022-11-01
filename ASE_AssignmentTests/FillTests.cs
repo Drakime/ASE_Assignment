@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Fill' class.
+    /// </summary>
     [TestClass]
     public class FillTests
     {
@@ -17,6 +20,9 @@ namespace ASE_AssignmentTests
         Canvas canvas1;
         Canvas canvas2;
 
+        /// <summary>
+        /// Instantiates a bitmap, canvases, and lists to store parameters.
+        /// </summary>
         [TestInitialize]
         public void SetUp()
         {
@@ -36,20 +42,14 @@ namespace ASE_AssignmentTests
         public void Fill_StoresCorrectParameters_WhenParsingUserInput()
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            List<string> userInputOn = new List<string>();
-            List<string> userInputOff = new List<string>();*/
             userInputOn = Parser.ParseParameters("fill on");
             userInputOff = Parser.ParseParameters("fill off");
 
-            /*string userInputOff = "fill off";*/
-
             // Act
-            // Pass "on" argument in user input
-            Fill fillOn = new Fill(canvas1, userInputOn);
+            Fill fillOn = new Fill(canvas1, userInputOn);   // Pass "on" argument in user input
             fillOn.Operation();
-            // Pass "off" argument in user input
-            Fill fillOff = new Fill(canvas2, userInputOff);
+            
+            Fill fillOff = new Fill(canvas2, userInputOff);     // Pass "off" argument in user input
             fillOff.Operation();
 
             // Assert
@@ -72,8 +72,6 @@ namespace ASE_AssignmentTests
         public void Fill_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             List<string> parameters = new List<string>();
             parameters = Parser.ParseParameters(userInput);
 
@@ -96,8 +94,6 @@ namespace ASE_AssignmentTests
         public void Fill_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             List<string> parameters = new List<string>();
             parameters = Parser.ParseParameters(userInput);
 

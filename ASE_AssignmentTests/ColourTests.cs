@@ -9,9 +9,27 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Colour' class.
+    /// </summary>
     [TestClass]
     public class ColourTests
     {
+        Bitmap bitmap;
+        Canvas canvas;
+        List<string> parameters;
+
+        /// <summary>
+        /// Instantiates a bitmap, canvas, and a list to store parameters.
+        /// </summary>
+        [TestInitialize]
+        public void SetUp()
+        {
+            bitmap = new Bitmap(100, 100);
+            canvas = new Canvas(bitmap);
+            parameters = new List<string>();
+        }
+
         /// <summary>
         /// Asserts that the argument of a correct 'Colour' command input
         /// stores the correct 'toolColour' within the instanced class.
@@ -29,12 +47,9 @@ namespace ASE_AssignmentTests
         public void Pen_StoresCorrectParameters_WhenParsingUserInput(string userInput, int colorKey)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();
             parameters = Parser.ParseParameters(userInput);
-            // Add possible colours to array
-            Color[] colourArray = { Color.Orange, Color.Red, Color.Green, Color.RoyalBlue };
+
+            Color[] colourArray = { Color.Orange, Color.Red, Color.Green, Color.RoyalBlue };    // Add possible colours to array
 
             // Act
             Colour toolColour = new Colour(canvas, parameters);
@@ -57,9 +72,6 @@ namespace ASE_AssignmentTests
         public void Pen_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -81,9 +93,6 @@ namespace ASE_AssignmentTests
         public void Pen_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);
-            List<string> parameters = new List<string>();
             parameters = Parser.ParseParameters(userInput);
 
             // Act

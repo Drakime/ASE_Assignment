@@ -3,6 +3,9 @@ using ASE_Assignment;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Canvas' class.
+    /// </summary>
     [TestClass]
     public class CanvasTests
     {   

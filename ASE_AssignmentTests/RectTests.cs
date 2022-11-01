@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
+    /// <summary>
+    /// A test class for testing the 'Rect' class.
+    /// </summary>
     [TestClass]
     public class RectTests
     {
@@ -15,6 +18,9 @@ namespace ASE_AssignmentTests
         Canvas canvas;
         List<string> parameters;
 
+        /// <summary>
+        /// Instantiates a bitmap, canvas, and a list to store parameters.
+        /// </summary>
         [TestInitialize]
         public void SetUp()
         {
@@ -37,8 +43,6 @@ namespace ASE_AssignmentTests
         public void Rectangle_StoresCorrectParameters_WhenParsingUserInput(string userInput, int expectedWidth, int expectedHeight)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -62,8 +66,6 @@ namespace ASE_AssignmentTests
         public void Rect_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
@@ -86,8 +88,6 @@ namespace ASE_AssignmentTests
         public void Rect_AddsToErrorsListCollection_WhenInvalidTypeOfParameters(string userInput)
         {
             // Arrange
-            /*Bitmap bitmap = new Bitmap(100, 100);
-            Canvas canvas = new Canvas(bitmap);*/
             parameters = Parser.ParseParameters(userInput);
 
             // Act
