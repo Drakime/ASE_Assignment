@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,6 +37,13 @@ namespace ASE_Assignment
             parameters.RemoveAt(0);
 
             return parameters;
+        }
+
+        // Currently exists for test-driven development
+        public static int ParseVariable(string userInput)
+        {
+            // TODO: To be implemented
+            return 0;
         }
     }
 }

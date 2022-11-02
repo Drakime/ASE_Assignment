@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 namespace ASE_AssignmentTests
 {
     /// <summary>
-    /// A test class for testing the 'Clear' class.
+    /// A test class for testing the 'Run' class.
     /// </summary>
     [TestClass]
-    public class ClearTests
+    public class RunTests
     {
         Bitmap bitmap;
         Canvas canvas;
@@ -33,32 +33,32 @@ namespace ASE_AssignmentTests
         /// Asserts that there are no error strings added to the
         /// 'Error' list collection when the user input is correct.
         /// </summary>
-        [TestMethod()]
-        public void Clear_HasEmptyErrorsListCollection_WhenValidNumberOfParameters()
+        [TestMethod]
+        public void Run_HasEmptyErrorsListCollection_WhenValidNumberOfParameters()
         {
             // Arrange
-            string userInput = "clear";
+            string userInput = "run";
             parameters = Parser.ParseParameters(userInput);
 
             // Act
-            Clear clear = new Clear(canvas, parameters);
+            Run run = new Run(canvas, parameters);
 
             // Assert
-            Assert.IsTrue(clear.Errors.Count == 0);
+            Assert.IsTrue(run.Errors.Count == 0);
         }
 
         /// <summary>
         /// Asserts that an error string is added to the 'Error' list
         /// collection when the user input has an invalid number of parameters.
         /// </summary>
-        /// <param name="userInput">An incorrect 'Clear' command input</param>
+        /// <param name="userInput">An incorrect 'Run' command input</param>
         [DataTestMethod]
-        [DataRow("clear x")]
-        [DataRow("clear 98")]
-        [DataRow("clear 200")]
-        public void Clear_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
+        [DataRow("run x")]
+        [DataRow("run 98")]
+        [DataRow("run 200")]
+        public void Run_AddsToErrorsListCollection_WhenInvalidNumberOfParameters(string userInput)
         {
-            // Arrange  
+            // Arrange
             parameters = Parser.ParseParameters(userInput);
 
             // Act
