@@ -37,7 +37,7 @@ namespace ASE_Assignment
         /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
-            if (Parameters.Count != 1)
+            if (Parameters.Count != 0)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
@@ -53,7 +53,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
+                Console = new ConsoleDisplayError(Errors);
                 Console.PrintErrorToConsole();
                 return;
             }

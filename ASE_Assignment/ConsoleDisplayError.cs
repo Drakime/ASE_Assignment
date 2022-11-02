@@ -8,13 +8,11 @@ namespace ASE_Assignment
 {
     public class ConsoleDisplayError
     {
-        private string userInput;
         private List<string> errors;
         TextBox consoleWindow = Application.OpenForms["Form1"].Controls["console"] as TextBox;
 
-        public ConsoleDisplayError(string userInput, List<string> errors)
+        public ConsoleDisplayError(List<string> errors)
         {
-            this.userInput = userInput;
             this.errors = errors;
         }
 
@@ -22,7 +20,7 @@ namespace ASE_Assignment
         {
             foreach (string error in errors)
             {
-                consoleWindow.AppendText("'" + userInput + "'" + " : " + error);
+                consoleWindow.AppendText(error);
             }
         }
     }

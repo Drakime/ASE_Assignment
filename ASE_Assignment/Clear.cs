@@ -49,7 +49,7 @@ namespace ASE_Assignment
         {
             if (Errors.Count != 0)
             {
-                Console = new ConsoleDisplayError(Parameters.ToString(), Errors);
+                Console = new ConsoleDisplayError(Errors);
                 Console.PrintErrorToConsole();
                 return;
             }
