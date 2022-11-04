@@ -46,6 +46,9 @@ namespace ASE_Assignment
 
             switch (inputColour)
             {
+                case "black":
+                    toolColour = Color.Black;
+                    break;
                 case "green":
                     toolColour = Color.Green;
                     break;

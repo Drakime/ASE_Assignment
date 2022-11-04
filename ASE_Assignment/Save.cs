@@ -35,7 +35,7 @@ namespace ASE_Assignment
         {
             
 
-            if (Parameters.Count != 1)
+            if (Parameters.Count != 0)
             {
                 Errors.Add(InvalidNumberOfParameters);
                 return;
