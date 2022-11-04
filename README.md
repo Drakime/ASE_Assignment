@@ -6,23 +6,23 @@ The assignment is to produce a Windows Form App, written in C#, that is capable 
 
 ## Features
 ### Command Parser
-- [ ] Command line for single command execution
-- [ ] Program input area for multiline command execution
-- [ ] Save and load program to text file
-- [ ] Syntax checking
-  - [ ] Check for valid commands
-  - [ ] Check for valid parameters
+- [x] Command line for single command execution
+- [x] Program input area for multiline command execution
+- [x] Save and load program to text file
+- [x] Syntax checking
+  - [x] Check for valid commands
+  - [x] Check for valid parameters
 ### Drawing Commands
-- [ ] Pen positioning
-- [ ] Pen draw, from point A to point B
-- [ ] Clear command - clear drawing area
-- [ ] Reset command - reset pen position
-- [ ] Basic Shapes
-  - [ ] rectangle <width> <height>
-  - [ ] circle <radius>
-  - [ ] triangle <x1> <y1> <x2> <y2> <x3> <y3>
-- [ ] pen <colour> - red, green, orange, blue
-- [ ] fill <on/off> - shape fill
+- [x] Pen positioning
+- [x] Pen draw, from point A to point B
+- [x] Clear command - clear drawing area
+- [x] Reset command - reset pen position
+- [x] Basic Shapes
+  - [x] rectangle <width> <height>
+  - [x] circle <radius>
+  - [x] triangle <x1> <y1> <x2> <y2> <x3> <y3>
+- [x] pen <colour> - black, red, green, orange, blue
+- [x] fill <on/off> - shape fill
 ### Programming Commands
 - [ ] Variables
 - [ ] Iteration - Loop
