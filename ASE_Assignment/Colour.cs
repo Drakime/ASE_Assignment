@@ -17,7 +17,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas of the current application instance.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Colour(Canvas canvas, List<string> parameters)
         {
             Name = "colour";
@@ -33,7 +33,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             string inputColour = Parameters[0];
@@ -82,7 +81,7 @@ namespace ASE_Assignment
                 return;
             }
 
-            drawingCanvas.ToolColour = ToolColour;
+            DrawingCanvas.ToolColour = ToolColour;
         }
 
         // For unit tests

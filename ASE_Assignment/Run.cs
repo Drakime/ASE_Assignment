@@ -19,7 +19,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be manipulated.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Run(Canvas canvas, List<string> parameters)
         {
             Name = "run";
@@ -34,7 +34,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 0)

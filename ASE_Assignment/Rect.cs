@@ -24,7 +24,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Rect(Canvas canvas, List<string> parameters)
         {
             Name = "rectangle";
@@ -40,7 +40,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 1)
@@ -84,18 +83,18 @@ namespace ASE_Assignment
                 return;
             }
 
-            Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
+            Graphics g = Graphics.FromImage(DrawingCanvas.Bitmap);
 
-            if (drawingCanvas.HasShapeFilled == false)
+            if (DrawingCanvas.HasShapeFilled == false)
             {
-                Pen pen = new Pen(drawingCanvas.ToolColour);
-                g.DrawRectangle(pen, drawingCanvas.PointX, drawingCanvas.PointY, width, height);
+                Pen pen = new Pen(DrawingCanvas.ToolColour);
+                g.DrawRectangle(pen, DrawingCanvas.PointX, DrawingCanvas.PointY, width, height);
                 pen.Dispose();
             }
             else
             {
-                SolidBrush brush = new SolidBrush(drawingCanvas.ToolColour);
-                g.FillRectangle(brush, drawingCanvas.PointX, drawingCanvas.PointY, width, height);
+                SolidBrush brush = new SolidBrush(DrawingCanvas.ToolColour);
+                g.FillRectangle(brush, DrawingCanvas.PointX, DrawingCanvas.PointY, width, height);
                 brush.Dispose();
             }
 

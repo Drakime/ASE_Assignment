@@ -14,7 +14,7 @@ namespace ASE_Assignment
 
         private string name = "";
         private List<string> parameters = new List<string>();
-        public Canvas drawingCanvas;
+        private Canvas drawingCanvas;
 
         /// <summary>
         /// The collection of errors in a command.
@@ -27,7 +27,6 @@ namespace ASE_Assignment
         /// Parses the provided user input, to retrieve
         /// command parameters.
         /// </summary>
-        /// <param name="userInput">The input of the user.</param>
         public abstract void VerifyParameters();
 
         /// <summary>

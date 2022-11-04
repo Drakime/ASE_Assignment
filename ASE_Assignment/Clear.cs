@@ -15,7 +15,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Clear(Canvas canvas, List<string> parameters)
         {
             Name = "clear";
@@ -30,7 +30,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 0)
@@ -54,7 +53,7 @@ namespace ASE_Assignment
                 return;
             }
 
-            Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
+            Graphics g = Graphics.FromImage(DrawingCanvas.Bitmap);
 
             g.Clear(Color.Gray);
 

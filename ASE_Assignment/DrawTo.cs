@@ -24,7 +24,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public DrawTo(Canvas canvas, List<string> parameters)
         {
             Name = "drawto";
@@ -40,7 +40,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             
@@ -80,10 +79,10 @@ namespace ASE_Assignment
                 return;
             }
 
-            Graphics g = Graphics.FromImage(drawingCanvas.Bitmap);
-            Pen pen = new Pen(drawingCanvas.ToolColour);
+            Graphics g = Graphics.FromImage(DrawingCanvas.Bitmap);
+            Pen pen = new Pen(DrawingCanvas.ToolColour);
 
-            g.DrawLine(pen, drawingCanvas.PointX, drawingCanvas.PointY, x, y);
+            g.DrawLine(pen, DrawingCanvas.PointX, DrawingCanvas.PointY, x, y);
 
             pen.Dispose();
             g.Dispose();

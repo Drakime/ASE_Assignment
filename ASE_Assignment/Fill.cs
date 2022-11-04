@@ -17,7 +17,7 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be drawn on.</param>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Fill(Canvas canvas, List<string> parameters)
         {
             Name = "fill";
@@ -33,7 +33,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             
@@ -71,11 +70,11 @@ namespace ASE_Assignment
 
             if (shapeFill.Equals("on"))
             {
-                drawingCanvas.HasShapeFilled = true;
+                DrawingCanvas.HasShapeFilled = true;
             }
             else
             {
-                drawingCanvas.HasShapeFilled = false;
+                DrawingCanvas.HasShapeFilled = false;
             }
         }
 

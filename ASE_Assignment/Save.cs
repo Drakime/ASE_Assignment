@@ -16,7 +16,7 @@ namespace ASE_Assignment
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="userInput">The input of the user.</param>
+        /// <param name="parameters">The parameters of the user input.</param>
         public Save(List<string> parameters)
         {
             Name = "save";
@@ -30,7 +30,6 @@ namespace ASE_Assignment
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
-        /// <param name="userInput">The input of the user to be parsed.</param>
         public override void VerifyParameters()
         {
             
