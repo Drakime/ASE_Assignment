@@ -95,5 +95,23 @@ namespace ASE_AssignmentTests
             // Assert
             Assert.IsTrue(drawto.Errors.Count != 0);
         }
+
+        [DataTestMethod]
+        [DataRow("drawto 10,15", 10, 15)]
+        [DataRow("drawto 67,90", 67, 90)]
+        [DataRow("drawto 132,48", 132, 48)]
+        public void DrawTo_UpdatesCanvasCoordinates_WhenParsingInput(string userInput, int expectedX, int expectedY)
+        {
+            // Arrange
+            parameters = Parser.ParseParameters(userInput);
+
+            // Act
+            DrawTo drawto = new DrawTo(canvas, parameters);
+            drawto.Operation();
+
+            // Assert
+            Assert.AreEqual(expectedX, canvas.PointX);
+            Assert.AreEqual(expectedY, canvas.PointY);
+        }
     }
 }

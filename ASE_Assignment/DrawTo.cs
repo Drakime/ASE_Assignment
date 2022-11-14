@@ -86,6 +86,9 @@ namespace ASE_Assignment
 
             pen.Dispose();
             g.Dispose();
+
+            DrawingCanvas.PointX = x;
+            DrawingCanvas.PointY = y;
         }
 
         // For unit tests
