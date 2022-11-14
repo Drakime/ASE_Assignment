@@ -15,6 +15,8 @@ namespace ASE_Assignment
     /// </summary>
     public class Run : Command
     {
+        private UserProgram program;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -25,6 +27,7 @@ namespace ASE_Assignment
             Name = "run";
             DrawingCanvas = canvas;
             Parameters = parameters;
+            program = new UserProgram(DrawingCanvas);
             VerifyParameters();
         }
 
@@ -57,19 +60,45 @@ namespace ASE_Assignment
                 return;
             }
 
-            TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;
+            /*TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;
 
             CommandFactory factory = new CommandFactory();
 
-            string[] commands = Regex.Split(t.Text.Trim().ToLower(), @"\r\n");
+            string[] commands = Regex.Split(t.Text.Trim().ToLower(), @"\r\n");*/
 
-            foreach (string command in commands)
+            /* You need to add an arraylist that stores key value pairs -
+             * the key is the line number and the value is the command object.
+             * So, it should be something along the lines of:
+             * foreach (string command in commands) 
+             * {
+             *      key name;
+             *      arraylist [name] = [name].add(factory.Command(DrawingCanvas, command));
+             *      
+             * }
+             */
+
+            /*foreach (string command in commands)
             {
                 factory.Command(DrawingCanvas, command);
             }
 
             PictureBox p = Application.OpenForms["Form1"].Controls["drawingCanvas"] as PictureBox;
-            p.Image = DrawingCanvas.Bitmap;
+            p.Image = DrawingCanvas.Bitmap;*/
+
+            program.SetProgramLines();
+            program.CheckSyntax();
+
+            if (program.HasNoSyntaxError == true)
+            {
+                program.Execute();
+
+                PictureBox p = Application.OpenForms["Form1"].Controls["drawingCanvas"] as PictureBox;
+                p.Image = DrawingCanvas.Bitmap;
+            }
+            else
+            {
+                return;
+            }
         } 
     }
 }

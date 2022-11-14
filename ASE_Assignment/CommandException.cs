@@ -13,6 +13,7 @@ namespace ASE_Assignment
         public CommandException(string command)
         {
             this.command = command;
+            VerifyParameters();
         }
 
         public override void Operation()
@@ -24,7 +25,7 @@ namespace ASE_Assignment
 
         public override void VerifyParameters()
         {
-            return;
+            Errors.Add("'" + command + "'" + " command does not exist\r\n");
         }
     }
 }

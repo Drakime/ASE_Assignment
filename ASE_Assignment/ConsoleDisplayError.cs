@@ -23,5 +23,13 @@ namespace ASE_Assignment
                 consoleWindow.AppendText(error);
             }
         }
+
+        public void PrintProgramErrorToConsole(int lineNumber)
+        {
+            foreach (string error in errors)
+            {
+                consoleWindow.AppendText("Line " + lineNumber + ": " + error);
+            }
+        }
     }
 }
