@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A factory class that returns command type objects.
+    /// </summary>
     public class CommandFactory : CommandFactoryFactory
     {
         public override Command CreateCommand(Canvas canvas, string userInput)
         {
-            // string[] command = userInput.Split(" ");
-            // string commandType = command[0];
-
             string command = Parser.ParseCommand(userInput);
             List<string> parameters = Parser.ParseParameters(userInput);
 

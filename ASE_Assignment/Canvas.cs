@@ -17,6 +17,10 @@ namespace ASE_Assignment
         Color toolColour = Color.Black;
         private bool hasShapeFilled = false;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="bitmap">The bitmap that is to be drawn on.</param>
         public Canvas(Bitmap bitmap)
         {
             this.bitmap = bitmap;

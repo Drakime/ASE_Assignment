@@ -60,31 +60,6 @@ namespace ASE_Assignment
                 return;
             }
 
-            /*TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;
-
-            CommandFactory factory = new CommandFactory();
-
-            string[] commands = Regex.Split(t.Text.Trim().ToLower(), @"\r\n");*/
-
-            /* You need to add an arraylist that stores key value pairs -
-             * the key is the line number and the value is the command object.
-             * So, it should be something along the lines of:
-             * foreach (string command in commands) 
-             * {
-             *      key name;
-             *      arraylist [name] = [name].add(factory.Command(DrawingCanvas, command));
-             *      
-             * }
-             */
-
-            /*foreach (string command in commands)
-            {
-                factory.Command(DrawingCanvas, command);
-            }
-
-            PictureBox p = Application.OpenForms["Form1"].Controls["drawingCanvas"] as PictureBox;
-            p.Image = DrawingCanvas.Bitmap;*/
-
             program.SetProgramLines();
             program.CheckSyntax();
 

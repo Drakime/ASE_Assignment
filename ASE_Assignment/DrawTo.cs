@@ -42,7 +42,6 @@ namespace ASE_Assignment
         /// </summary>
         public override void VerifyParameters()
         {
-            
             string[] userInputParameters = Parameters[0].Split(",");
 
             if (Parameters.Count != 1 || userInputParameters.Length != 2)

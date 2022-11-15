@@ -32,8 +32,6 @@ namespace ASE_Assignment
         /// </summary>
         public override void VerifyParameters()
         {
-            
-
             if (Parameters.Count != 0)
             {
                 Errors.Add(InvalidNumberOfParameters);

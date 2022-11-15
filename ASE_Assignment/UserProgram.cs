@@ -19,6 +19,10 @@ namespace ASE_Assignment
         private Canvas drawingCanvas;
         private bool hasNoSyntaxError = true;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="drawingCanvas">The canvas that is to be drawn on.</param>
         public UserProgram(Canvas drawingCanvas)
         {
             factory = new CommandFactory();
@@ -26,6 +30,10 @@ namespace ASE_Assignment
             this.drawingCanvas = drawingCanvas;
         }
 
+        /// <summary>
+        /// Adds each line in the user program as a 'Command' object to
+        /// an arraylist.
+        /// </summary>
         public void SetProgramLines()
         {
             TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;
@@ -38,6 +46,10 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Checks each 'Command' object in an arraylist for errors.
+        /// If there are any errors, the error is printed to the console.
+        /// </summary>
         public void CheckSyntax()
         {
             foreach (Command line in programLines)
@@ -52,6 +64,9 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Executes the drawing method of each object in an arraylist.
+        /// </summary>
         public void Execute()
         {
             foreach (Command line in programLines)
@@ -60,6 +75,9 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Gets the value indicating whether the user program has syntax errors.
+        /// </summary>
         public bool HasNoSyntaxError
         {
             get { return hasNoSyntaxError; }
