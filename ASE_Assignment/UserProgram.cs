@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
 namespace ASE_Assignment
 {
@@ -18,6 +20,7 @@ namespace ASE_Assignment
         private ArrayList programLines;
         private Canvas drawingCanvas;
         private bool hasNoSyntaxError = true;
+        private Dictionary<string, int> variables = new Dictionary<string, int>();
 
         /// <summary>
         /// Constructor.
@@ -34,16 +37,70 @@ namespace ASE_Assignment
         /// Adds each line in the user program as a 'Command' object to
         /// an arraylist.
         /// </summary>
-        public void SetProgramLines()
+        public void SetProgramLines(string userInput)
         {
-            TextBox t = Application.OpenForms["Form1"].Controls["programTextBox"] as TextBox;
-
-            string[] userProgram = Regex.Split(t.Text.Trim().ToLower(), @"\r\n");
+            string[] userProgram = Regex.Split(userInput.Trim().ToLower(), @"\r\n");
 
             foreach (string line in userProgram)
             {
-                programLines.Add(factory.CreateCommand(drawingCanvas, line));
+                var command = factory.CreateCommand(drawingCanvas, line);
+
+                // Substitute variables into command if needed
+                string checkedVariableLine = CheckVariables(line);
+
+                programLines.Add(factory.CreateCommand(drawingCanvas, checkedVariableLine));
+
+                // Add command to variables list if variable
+                if (command is Variable)
+                {
+                    Variable variable = (Variable)command;
+
+                    int value = variable.Value;
+                    string variableName = variable.VariableName;
+
+                    variables.Add(variableName, value);
+                    continue;
+                }
             }
+        }
+        
+        /// <summary>
+        /// Checks if the command requires any existing variables
+        /// to be substituted into the program line.
+        /// </summary>
+        /// <param name="line">The command to be checked.</param>
+        /// <returns></returns>
+        public string CheckVariables(string line)
+        {
+            string[] tokens = line.Split(" ");
+
+            // Variable substitution for multiple parameter commands
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                if (tokens[i].Contains(","))
+                {
+                    string[] splitParameters = tokens[i].Split(",");
+
+                    for (int j = 0; j < splitParameters.Length; j++)
+                    {
+                        if (variables.ContainsKey(splitParameters[j]))
+                        {
+                            splitParameters[j] = variables[splitParameters[j]].ToString();
+                        }
+                    }
+
+                    string rejoinedParameters = string.Join(",", splitParameters);
+                    tokens[i] = rejoinedParameters;
+                }
+
+                // Variable substitution for single parameter commands
+                if (variables.ContainsKey(tokens[i]))
+                {
+                    tokens[i] = variables[tokens[i]].ToString();
+                }
+            }
+            
+            return string.Join(" ", tokens);
         }
 
         /// <summary>
@@ -81,6 +138,16 @@ namespace ASE_Assignment
         public bool HasNoSyntaxError
         {
             get { return hasNoSyntaxError; }
+        }
+
+        public ArrayList ProgramLines
+        {
+            get { return programLines; }
+        }
+
+        public Dictionary<string, int> Variables
+        {
+            get { return variables; }
         }
     }
 }

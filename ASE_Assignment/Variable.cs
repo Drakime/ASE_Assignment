@@ -6,25 +6,58 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that stores a value as a variable.
+    /// </summary>
     public class Variable : Command
     {
-        int value = 0;
+        private string variableName = "";
+        private int value = 0;
 
         public int Value { get { return value; } }
+        public string VariableName { get { return variableName; } }
 
-        public Variable(int value)
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="parameters">The parameters of the user input.</param>
+        public Variable(List<string> parameters)
         {
-            this.value = value;
+            Parameters = parameters;
+            VerifyParameters();
+            Operation();
         }
 
+        /// <summary>
+        /// Parses the parameter from the user input and sets the class
+        /// attribute accordingly.
+        /// 
+        /// If criteria is not met, adds to a list collection named 'errors'.
+        /// </summary>
         public override void VerifyParameters()
         {
-            throw new NotImplementedException();
+            if (Parameters.Count != 3 || !Parameters[1].Equals("=") || Parameters[0].GetType() != typeof(string))
+            {
+                Errors.Add("Command format incorrect.");
+                return;
+            }
+
+            if (Int32.TryParse(Parameters[2], out int parsedValue))
+            {
+                value = parsedValue;
+            }
+            else
+            {
+                Errors.Add(InvalidTypeOfParameters);
+            }
         }
 
+        /// <summary>
+        /// Assigns the variable name to the class attribute.
+        /// </summary>
         public override void Operation()
         {
-            throw new NotImplementedException();
+            variableName = Parameters[0];
         }
     }
 }

@@ -39,6 +39,17 @@ namespace ASE_Assignment
             return parameters;
         }
 
+        public static string ParseProgram(string userInput)
+        {
+            List<string> userProgram = new List<string>();
+            string[] splitInput = userInput.Split(" ");
+            userProgram = splitInput.ToList();
+            userProgram.RemoveAt(0);
+
+            return string.Join(" ", userProgram);
+            
+        }
+
         // Currently exists for test-driven development
         public static int ParseVariable(string userInput)
         {

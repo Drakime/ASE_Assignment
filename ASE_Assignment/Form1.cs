@@ -48,7 +48,9 @@ namespace ASE_Assignment
         /// <param name="e">An instance of the event data.</param>
         private void runButton_Click(object sender, EventArgs e)
         {
-            factory.Command(canvas, "run");
+            string userProgram = programTextBox.Text;
+
+            factory.Command(canvas, "run" + " " + userProgram);
         }
 
         /// <summary>
@@ -60,6 +62,8 @@ namespace ASE_Assignment
         {
             if (e.KeyChar == (Char)Keys.Enter)
             {
+                e.Handled = true;
+
                 string userInput = commandLine.Text.Trim().ToLower();
 
                 factory.Command(canvas, userInput);

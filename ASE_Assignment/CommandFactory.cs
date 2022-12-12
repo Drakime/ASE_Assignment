@@ -38,11 +38,14 @@ namespace ASE_Assignment
                 case "fill":
                     return new Fill(canvas, parameters);
                 case "run":
-                    return new Run(canvas, parameters);
+                    string userProgram = Parser.ParseProgram(userInput);
+                    return new Run(canvas, userProgram);
                 case "save":
                     return new Save(parameters);
                 case "load":
                     return new Load(parameters);
+                case "var":
+                    return new Variable(parameters);
                 default:
                     return new CommandException(command);
             }
