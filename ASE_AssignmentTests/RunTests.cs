@@ -36,12 +36,8 @@ namespace ASE_AssignmentTests
         [TestMethod]
         public void Run_HasEmptyErrorsListCollection_WhenValidNumberOfParameters()
         {
-            // Arrange
-            string userInput = "run";
-            parameters = Parser.ParseParameters(userInput);
-
             // Act
-            Run run = new Run(canvas, parameters);
+            Run run = new Run(canvas, "");
 
             // Assert
             Assert.IsTrue(run.Errors.Count == 0);

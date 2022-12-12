@@ -16,17 +16,18 @@ namespace ASE_Assignment
     public class Run : Command
     {
         private UserProgram program;
+        private string userProgram;
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="canvas">The canvas to be manipulated.</param>
         /// <param name="parameters">The parameters of the user input.</param>
-        public Run(Canvas canvas, List<string> parameters)
+        public Run(Canvas canvas, string userProgram)
         {
             Name = "run";
             DrawingCanvas = canvas;
-            Parameters = parameters;
+            this.userProgram = userProgram;
             program = new UserProgram(DrawingCanvas);
             VerifyParameters();
         }
@@ -60,7 +61,7 @@ namespace ASE_Assignment
                 return;
             }
 
-            program.SetProgramLines();
+            program.SetProgramLines(userProgram);
             program.CheckSyntax();
 
             if (program.HasNoSyntaxError == true)
