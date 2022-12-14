@@ -40,6 +40,9 @@ namespace ASE_Assignment
                 case "run":
                     string userProgram = Parser.ParseProgram(userInput);
                     return new Run(canvas, userProgram);
+                case "syntax":
+                    userProgram = Parser.ParseProgram(userInput);
+                    return new Syntax(canvas, userProgram);
                 case "save":
                     return new Save(parameters);
                 case "load":

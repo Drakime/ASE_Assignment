@@ -39,6 +39,7 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.console = new System.Windows.Forms.TextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
+            this.syntax_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,21 +103,21 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.openToolStripMenuItem.Text = "Load";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -142,11 +143,22 @@
             this.consoleLabel.TabIndex = 6;
             this.consoleLabel.Text = "Console";
             // 
+            // syntax_button
+            // 
+            this.syntax_button.Location = new System.Drawing.Point(253, 438);
+            this.syntax_button.Name = "syntax_button";
+            this.syntax_button.Size = new System.Drawing.Size(75, 23);
+            this.syntax_button.TabIndex = 7;
+            this.syntax_button.Text = "Syntax";
+            this.syntax_button.UseVisualStyleBackColor = true;
+            this.syntax_button.Click += new System.EventHandler(this.syntax_button_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 661);
+            this.Controls.Add(this.syntax_button);
             this.Controls.Add(this.consoleLabel);
             this.Controls.Add(this.console);
             this.Controls.Add(this.drawingCanvas);
@@ -178,5 +190,6 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private TextBox console;
         private Label consoleLabel;
+        private Button syntax_button;
     }
 }
