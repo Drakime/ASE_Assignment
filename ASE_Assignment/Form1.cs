@@ -54,6 +54,18 @@ namespace ASE_Assignment
         }
 
         /// <summary>
+        /// An event listener that checks the syntax of the program if the button is clicked.
+        /// </summary>
+        /// <param name="sender">The event source.</param>
+        /// <param name="e">An instance of the event data.</param>
+        private void syntax_button_Click(object sender, EventArgs e)
+        {
+            string userProgram = programTextBox.Text;
+
+            factory.Command(canvas, "syntax" + " " + userProgram);
+        }
+
+        /// <summary>
         /// An event listener that executes the command in the command line textbox.
         /// </summary>
         /// <param name="sender">The event source.</param>
@@ -66,8 +78,19 @@ namespace ASE_Assignment
 
                 string userInput = commandLine.Text.Trim().ToLower();
 
-                factory.Command(canvas, userInput);
-                drawingCanvas.Image = canvas.Bitmap;
+                if (userInput == "run")
+                {
+                    runButton_Click(sender, e);
+                }
+                else if (userInput == "syntax")
+                {
+                    syntax_button_Click(sender, e);
+                }
+                else
+                {
+                    factory.Command(canvas, userInput);
+                    drawingCanvas.Image = canvas.Bitmap;
+                }
                 commandLine.Clear();
             }
         }
