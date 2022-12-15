@@ -45,11 +45,6 @@ namespace ASE_Assignment
             {
                 var command = factory.CreateCommand(drawingCanvas, line);
 
-                // Substitute variables into command if needed
-                string checkedVariableLine = CheckVariables(line);
-
-                programLines.Add(factory.CreateCommand(drawingCanvas, checkedVariableLine));
-
                 // Add command to variables list if variable
                 if (command is Variable)
                 {
@@ -58,9 +53,21 @@ namespace ASE_Assignment
                     int value = variable.Value;
                     string variableName = variable.VariableName;
 
-                    variables.Add(variableName, value);
+                    if (variables.ContainsKey(variableName))
+                    {
+                        variables[variableName] = value;
+                    }
+                    else
+                    {
+                        variables.Add(variableName, value);
+                    }
                     continue;
                 }
+
+                // Substitute variables into command if needed
+                string checkedVariableLine = CheckVariables(line);
+
+                programLines.Add(factory.CreateCommand(drawingCanvas, checkedVariableLine));
             }
         }
         
