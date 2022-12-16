@@ -43,6 +43,11 @@ namespace ASE_Assignment
                 case "syntax":
                     userProgram = Parser.ParseProgram(userInput);
                     return new Syntax(canvas, userProgram);
+                case "if":
+                    string condition = Parser.ParseProgram(userInput);
+                    return new ConditionalCommand(canvas, condition);
+                case "endif":
+                    return new EndConditional();
                 case "save":
                     return new Save(parameters);
                 case "load":
