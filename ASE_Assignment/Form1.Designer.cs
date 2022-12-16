@@ -50,6 +50,7 @@
             this.commandLine.Name = "commandLine";
             this.commandLine.Size = new System.Drawing.Size(316, 23);
             this.commandLine.TabIndex = 0;
+            this.commandLine.TabStop = false;
             this.commandLine.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.commandLine_KeyPress);
             // 
             // programTextBox
@@ -60,6 +61,7 @@
             this.programTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.programTextBox.Size = new System.Drawing.Size(397, 405);
             this.programTextBox.TabIndex = 1;
+            this.programTextBox.TabStop = false;
             this.programTextBox.TextChanged += new System.EventHandler(this.programTextBox_TextChanged);
             // 
             // runButton
@@ -68,6 +70,7 @@
             this.runButton.Name = "runButton";
             this.runButton.Size = new System.Drawing.Size(75, 23);
             this.runButton.TabIndex = 2;
+            this.runButton.TabStop = false;
             this.runButton.Text = "Run";
             this.runButton.UseVisualStyleBackColor = true;
             this.runButton.Click += new System.EventHandler(this.runButton_Click);
@@ -133,6 +136,7 @@
             this.console.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.console.Size = new System.Drawing.Size(776, 128);
             this.console.TabIndex = 5;
+            this.console.TabStop = false;
             // 
             // consoleLabel
             // 
@@ -149,6 +153,7 @@
             this.syntax_button.Name = "syntax_button";
             this.syntax_button.Size = new System.Drawing.Size(75, 23);
             this.syntax_button.TabIndex = 7;
+            this.syntax_button.TabStop = false;
             this.syntax_button.Text = "Syntax";
             this.syntax_button.UseVisualStyleBackColor = true;
             this.syntax_button.Click += new System.EventHandler(this.syntax_button_Click);

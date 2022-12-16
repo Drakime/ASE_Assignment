@@ -41,9 +41,9 @@ namespace ASE_Assignment
         {
             string[] userProgram = Regex.Split(userInput.Trim().ToLower(), @"\r\n");
 
-            foreach (string line in userProgram)
+            for (int index = 0; index < userProgram.Length; index++)
             {
-                var command = factory.CreateCommand(drawingCanvas, line);
+                var command = factory.CreateCommand(drawingCanvas, userProgram[index]);
 
                 // Add command to variables list if variable
                 if (command is Variable)
@@ -64,13 +64,40 @@ namespace ASE_Assignment
                     continue;
                 }
 
+                // Add conditional command to program lines if conditional command
+                if (command is ConditionalCommand)
+                {
+                    ConditionalCommand conditionalCommand = (ConditionalCommand)command;
+                    conditionalCommand.SetVariables(variables);
+
+                    ArrayList conditionalProgramLines = new ArrayList();
+
+                    for (int j = index + 1; j < userProgram.Length; j++)
+                    {
+                        var tempCommand = factory.CreateCommand(drawingCanvas, userProgram[j]);
+
+                        if (tempCommand is EndConditional)
+                        {
+                            index = j;
+                            break;
+                        }
+
+                        conditionalProgramLines.Add(tempCommand);
+                    }
+
+                    conditionalCommand.SetConditionalProgramLines(conditionalProgramLines);
+
+                    programLines.Add(conditionalCommand);
+                    continue;
+                }
+
                 // Substitute variables into command if needed
-                string checkedVariableLine = CheckVariables(line);
+                string checkedVariableLine = CheckVariables(userProgram[index]);
 
                 programLines.Add(factory.CreateCommand(drawingCanvas, checkedVariableLine));
             }
         }
-        
+
         /// <summary>
         /// Checks if the command requires any existing variables
         /// to be substituted into the program line.
@@ -106,7 +133,7 @@ namespace ASE_Assignment
                     tokens[i] = variables[tokens[i]].ToString();
                 }
             }
-            
+
             return string.Join(" ", tokens);
         }
 
