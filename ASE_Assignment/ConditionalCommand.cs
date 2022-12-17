@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that executes the commands within a conditional block, if
+    /// conditions are met.
+    /// </summary>
     public class ConditionalCommand : Command
     {
         private Dictionary<string, int> variables;
         private ArrayList programLines;
 
         /// <summary>
-        /// Constructor
+        /// Constructor.
         /// </summary>
         /// <param name="drawingCanvas">The canvas to be drawn on.</param>
         /// <param name="parameters">The condition to be checked.</param>
@@ -23,6 +27,9 @@ namespace ASE_Assignment
             Parameters = parameters.Split(" ").ToList();
         }
 
+        /// <summary>
+        /// Verifies that the condition has the correct number of terms.
+        /// </summary>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 3)
@@ -32,16 +39,12 @@ namespace ASE_Assignment
             }
         }
 
-        public void SetConditionalProgramLines(ArrayList programLines)
-        {
-            this.programLines = programLines;
-        }
-
-        public void SetVariables(Dictionary<string, int> variables)
-        {
-            this.variables = variables;
-        }
-
+        /// <summary>
+        /// Evaluates the condition provided by the user in the conditional command.
+        /// </summary>
+        /// <returns>A boolean determining if the condition is true or false.</returns>
+        /// <exception cref="Exception">Thrown if the variable in the condition does not exist
+        /// in the current program.</exception>
         public bool ParseCondition()
         {
             if (variables.ContainsKey(Parameters[0]))
@@ -72,7 +75,11 @@ namespace ASE_Assignment
                 default: return false;
             }
         }
-
+        
+        /// <summary>
+        /// Executes the commands in the conditional block if the 
+        /// condition is met.
+        /// </summary>
         public override void Operation()
         {
             if (ParseCondition())
@@ -82,6 +89,25 @@ namespace ASE_Assignment
                     line.Operation();
                 }
             }
+        }
+
+        /// <summary>
+        /// Gets or sets the program lines for the conditional command.
+        /// </summary>
+        public ArrayList ProgramLines
+        {
+            get { return programLines; }
+            set { programLines = value; }
+        }
+
+        /// <summary>
+        ///  Gets or sets the current variables of the program
+        ///  at the point that the conditional command is declared.
+        /// </summary>
+        public Dictionary<string, int> Variables
+        {
+            get { return variables; }
+            set { variables = value; }
         }
     }
 }
