@@ -7,15 +7,36 @@ using System.Threading.Tasks;
 
 namespace ASE_Assignment
 {
+    /// <summary>
+    /// A class that confirms if 
+    /// </summary>
     public class EndConditional : Command
     {
-        public EndConditional() { }
-
-        public override void VerifyParameters()
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="parameters">The parameters of the user input.</param>
+        public EndConditional(List<string> parameters)
         {
-            throw new NotImplementedException();
+            Parameters = parameters;
         }
 
+        /// <summary>
+        /// If criteria for the parameters is not met, adds to a list
+        /// of list collection named 'Errors'.
+        /// </summary>
+        public override void VerifyParameters()
+        {
+            if (Parameters.Count != 0)
+            {
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Returns execution back to the class that called the command.
+        /// </summary>
         public override void Operation()
         {
             return;

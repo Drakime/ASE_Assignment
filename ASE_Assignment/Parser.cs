@@ -39,6 +39,11 @@ namespace ASE_Assignment
             return parameters;
         }
 
+        /// <summary>
+        /// Extracts the user program from the user input.
+        /// </summary>
+        /// <param name="userInput">The input of the user.</param>
+        /// <returns>The user program from the input.</returns>
         public static string ParseProgram(string userInput)
         {
             List<string> userProgram = new List<string>();

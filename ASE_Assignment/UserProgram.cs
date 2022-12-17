@@ -68,7 +68,7 @@ namespace ASE_Assignment
                 if (command is ConditionalCommand)
                 {
                     ConditionalCommand conditionalCommand = (ConditionalCommand)command;
-                    conditionalCommand.SetVariables(variables);
+                    conditionalCommand.Variables = variables;
 
                     ArrayList conditionalProgramLines = new ArrayList();
 
@@ -85,7 +85,7 @@ namespace ASE_Assignment
                         conditionalProgramLines.Add(tempCommand);
                     }
 
-                    conditionalCommand.SetConditionalProgramLines(conditionalProgramLines);
+                    conditionalCommand.ProgramLines = conditionalProgramLines;
 
                     programLines.Add(conditionalCommand);
                     continue;
