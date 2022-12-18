@@ -47,7 +47,7 @@ namespace ASE_Assignment
                     string condition = Parser.ParseProgram(userInput);
                     return new ConditionalCommand(canvas, condition);
                 case "endif":
-                    return new EndConditional();
+                    return new EndConditional(parameters);
                 case "save":
                     return new Save(parameters);
                 case "load":

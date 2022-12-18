@@ -14,7 +14,8 @@ namespace ASE_Assignment
     public class ConditionalCommand : Command
     {
         private Dictionary<string, int> variables;
-        private ArrayList programLines;
+        private string codeBlockProgram;
+        private UserProgram codeBlock;
 
         /// <summary>
         /// Constructor.
@@ -25,6 +26,7 @@ namespace ASE_Assignment
         {
             DrawingCanvas = drawingCanvas;
             Parameters = parameters.Split(" ").ToList();
+            codeBlock = new UserProgram(drawingCanvas);
         }
 
         /// <summary>
@@ -84,20 +86,20 @@ namespace ASE_Assignment
         {
             if (ParseCondition())
             {
-                foreach (Command line in programLines)
-                {
-                    line.Operation();
-                }
+                codeBlock.Variables = variables;
+                codeBlock.SetProgramLines(codeBlockProgram);
+                codeBlock.CheckSyntax();
+                codeBlock.Execute();
             }
         }
 
         /// <summary>
         /// Gets or sets the program lines for the conditional command.
         /// </summary>
-        public ArrayList ProgramLines
+        public string CodeBlockProgram
         {
-            get { return programLines; }
-            set { programLines = value; }
+            get { return codeBlockProgram; }
+            set { codeBlockProgram = value; }
         }
 
         /// <summary>
