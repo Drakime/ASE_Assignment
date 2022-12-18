@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,23 +31,39 @@ namespace ASE_AssignmentTests
         }
 
         /// <summary>
-        /// Asserts that a conditional command in the program lines
-        /// contains the correct code block in the user program.
+        /// Asserts that a conditional command correctly parses the condition
+        /// as true and returns the corresponding boolean value.
         /// </summary>
         [TestMethod]
-        public void ConditionalCommand_ContainsCorrectCodeBlock_InUserProgram()
+        public void ConditionalCommand_ParsesConditionCorrectlyAsTrue_InConditionalCommand()
         {
-            // Arrange
-            string userInput = "rect 100,100\r\nvar x = 1\r\nif x == 1\r\ncircle 100\r\nrect 50,50\r\nendif";
-            UserProgram program = new UserProgram(canvas);
-
-            // Act
-            program.SetProgramLines(userInput);
-            ConditionalCommand command = (ConditionalCommand)program.ProgramLines[1];
+            // Arrange and Act
+            string condition = "x == 100";
+            ConditionalCommand command = new ConditionalCommand(canvas, condition);
+            Dictionary<string, int> variables = new Dictionary<string, int>();
+            variables.Add("x", 100);
+            command.Variables = variables;
 
             // Assert
-            Assert.IsTrue(command.ProgramLines[0].GetType() == typeof(Circle));
-            Assert.IsTrue(command.ProgramLines[1].GetType() == typeof(Rect));
+            Assert.IsTrue(command.ParseCondition());
+        }
+
+        /// <summary>
+        /// Asserts that a conditional command correctly parses the condition
+        /// as false and returns the corresponding boolean value.
+        /// </summary>
+        [TestMethod]
+        public void ConditionalCommand_ParsesConditionCorrectlyAsFalse_InConditionalCommand()
+        {
+            // Arrange and Act
+            string condition = "x == 100";
+            ConditionalCommand command = new ConditionalCommand(canvas, condition);
+            Dictionary<string, int> variables = new Dictionary<string, int>();
+            variables.Add("x", 200);
+            command.Variables = variables;
+
+            // Assert
+            Assert.IsFalse(command.ParseCondition());
         }
     }
 }
