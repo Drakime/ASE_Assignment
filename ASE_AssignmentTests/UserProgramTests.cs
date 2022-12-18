@@ -50,5 +50,41 @@ namespace ASE_AssignmentTests
             Assert.IsTrue(program.ProgramLines[3].GetType() == typeof(Colour));
             Assert.IsTrue(program.ProgramLines[4].GetType() == typeof(Triangle));
         }
+
+        /// <summary>
+        /// Asserts that the user program adds a variable in the program
+        /// to the variables dictionary.
+        /// </summary>
+        [TestMethod]
+        public void UserProgram_CreatesVariableInDictionary_WhenParsingUserProgram()
+        {
+            // Arrange
+            string userInput = "rect 100,100\r\nvar x = 1\r\nif x == 1\r\ncircle 100\r\nrect 50,50\r\nendif";
+            UserProgram program = new UserProgram(canvas);
+
+            // Act
+            program.SetProgramLines(userInput);
+
+            // Assert
+            Assert.IsTrue(program.Variables.Count == 1);
+        }
+
+        /// <summary>
+        /// Asserts that the user program creates a conditional command
+        /// object in the program lines arraylist.
+        /// </summary>
+        [TestMethod]
+        public void UserProgram_CreatesConditionalCommandInProgramLines_WhenParsingUserProgram()
+        {
+            // Arrange
+            string userInput = "rect 100,100\r\nvar x = 1\r\nif x == 1\r\ncircle 100\r\nrect 50,50\r\nendif";
+            UserProgram program = new UserProgram(canvas);
+
+            // Act
+            program.SetProgramLines(userInput);
+
+            // Assert
+            Assert.IsTrue(program.ProgramLines[1].GetType() == typeof(ConditionalCommand));
+        }
     }
 }

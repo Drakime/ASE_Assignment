@@ -70,7 +70,7 @@ namespace ASE_Assignment
                     ConditionalCommand conditionalCommand = (ConditionalCommand)command;
                     conditionalCommand.Variables = variables;
 
-                    ArrayList conditionalProgramLines = new ArrayList();
+                    List<string> codeBlock = new List<string>();
 
                     for (int j = index + 1; j < userProgram.Length; j++)
                     {
@@ -82,10 +82,9 @@ namespace ASE_Assignment
                             break;
                         }
 
-                        conditionalProgramLines.Add(tempCommand);
+                        codeBlock.Add(userProgram[j]);
                     }
-
-                    conditionalCommand.ProgramLines = conditionalProgramLines;
+                    conditionalCommand.CodeBlockProgram = string.Join("\r\n", codeBlock.ToArray());
 
                     programLines.Add(conditionalCommand);
                     continue;
@@ -172,16 +171,19 @@ namespace ASE_Assignment
         public bool HasNoSyntaxError
         {
             get { return hasNoSyntaxError; }
+            set { hasNoSyntaxError = value; }
         }
 
         public ArrayList ProgramLines
         {
             get { return programLines; }
+            set { programLines = value; }
         }
 
         public Dictionary<string, int> Variables
         {
             get { return variables; }
+            set { variables = value; }
         }
     }
 }
