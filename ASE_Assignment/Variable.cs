@@ -25,7 +25,6 @@ namespace ASE_Assignment
         {
             Parameters = parameters;
             VerifyParameters();
-            Operation();
         }
 
         /// <summary>
@@ -45,6 +44,7 @@ namespace ASE_Assignment
             if (Int32.TryParse(Parameters[2], out int parsedValue))
             {
                 value = parsedValue;
+                variableName = Parameters[0];
             }
             else
             {
@@ -57,7 +57,7 @@ namespace ASE_Assignment
         /// </summary>
         public override void Operation()
         {
-            variableName = Parameters[0];
+            return;
         }
     }
 }

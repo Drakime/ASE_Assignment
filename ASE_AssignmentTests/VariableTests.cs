@@ -68,7 +68,7 @@ namespace ASE_AssignmentTests
         public void Variable_AddsToErrorsListCollection_WhenEmptyUserInput()
         {
             // Arrange
-            string userInput = "";
+            string userInput = "var";
             parameters = Parser.ParseParameters(userInput);
 
             // Act
