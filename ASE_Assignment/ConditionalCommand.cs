@@ -58,9 +58,21 @@ namespace ASE_Assignment
                 throw new Exception("Variable not found.");
             }
 
-            int var = Int32.Parse(Parameters[0]);
+            if (Int32.TryParse(Parameters[0], out int var)) { }
+            else
+            {
+                Errors.Add(InvalidTypeOfParameters);
+                return false;
+            }
+
+            if (Int32.TryParse(Parameters[2], out int value)) { }
+            else
+            {
+                Errors.Add(InvalidTypeOfParameters);
+                return false;
+            }
+
             string comparisonOperator = Parameters[1];
-            int value = Int32.Parse(Parameters[2]);
 
             switch (comparisonOperator)
             {
@@ -77,7 +89,7 @@ namespace ASE_Assignment
                 default: return false;
             }
         }
-        
+
         /// <summary>
         /// Executes the commands in the conditional block if the 
         /// condition is met.

@@ -48,9 +48,12 @@ namespace ASE_Assignment
                 // Add command to variables list if variable
                 if (command is Variable)
                 {
-                    Variable variable = (Variable)command;
+                    Variable variable = new Variable();
+                    variable.Parameters = Parser.ParseParameters(userProgram[index]);
+                    variable.Variables = variables;
+                    variable.VerifyParameters();
 
-                    int value = variable.Value;
+                    int value = variable.VariableValue;
                     string variableName = variable.VariableName;
 
                     if (variables.ContainsKey(variableName))
@@ -60,6 +63,7 @@ namespace ASE_Assignment
                     else
                     {
                         variables.Add(variableName, value);
+                        programLines.Add(variable);
                     }
                     continue;
                 }
