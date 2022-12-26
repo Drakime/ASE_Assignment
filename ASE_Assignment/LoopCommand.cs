@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace ASE_Assignment
 {
     /// <summary>
-    /// A class that executes the commands within a conditional block, if
+    /// A class that executes the commands within a loop block, if
     /// conditions are met.
     /// </summary>
-    public class ConditionalCommand : Command
+    public class LoopCommand : Command
     {
         private Dictionary<string, int> variables;
         private string codeBlockProgram;
@@ -22,7 +22,7 @@ namespace ASE_Assignment
         /// </summary>
         /// <param name="drawingCanvas">The canvas to be drawn on.</param>
         /// <param name="parameters">The condition to be checked.</param>
-        public ConditionalCommand(Canvas drawingCanvas, string parameters)
+        public LoopCommand(Canvas drawingCanvas, string parameters)
         {
             DrawingCanvas = drawingCanvas;
             Parameters = parameters.Split(" ").ToList();
@@ -43,23 +43,25 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Evaluates the condition provided by the user in the conditional command.
+        /// Evaluates the condition provided by the user in the loop command.
         /// </summary>
         /// <returns>A boolean determining if the condition is true or false.</returns>
+        /// <exception cref="Exception">Thrown if the variable in the condition does not exist
+        /// in the current program.</exception>
         public bool ParseCondition()
         {
-            // Check that the variable in the condition already exists in the user program.
+            string conditionVariable;
+
             if (variables.ContainsKey(Parameters[0]))
             {
-                Parameters[0] = variables[Parameters[0]].ToString();
+                conditionVariable = variables[Parameters[0]].ToString();
             }
             else
             {
-                Errors.Add(InvalidTypeOfParameters);
-                return false;
+                throw new Exception("Variable not found.");
             }
 
-            if (Int32.TryParse(Parameters[0], out int var)) { }
+            if (Int32.TryParse(conditionVariable, out int var)) { }
             else
             {
                 Errors.Add(InvalidTypeOfParameters);
@@ -97,12 +99,16 @@ namespace ASE_Assignment
         /// </summary>
         public override void Operation()
         {
-            if (ParseCondition())
+            bool execute = ParseCondition();
+
+            while (execute)
             {
                 codeBlock.Variables = variables;
                 codeBlock.SetProgramLines(codeBlockProgram);
                 codeBlock.CheckSyntax();
                 codeBlock.Execute();
+                variables = codeBlock.Variables;
+                execute = ParseCondition();
             }
         }
 
