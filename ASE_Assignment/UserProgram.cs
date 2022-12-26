@@ -94,6 +94,32 @@ namespace ASE_Assignment
                     continue;
                 }
 
+                // Add loop command to program lines if loop command
+                if (command is LoopCommand)
+                {
+                    LoopCommand loopCommand = (LoopCommand)command;
+                    loopCommand.Variables = variables;
+
+                    List<string> codeBlock = new List<string>();
+
+                    for (int j = index + 1; j < userProgram.Length; j++)
+                    {
+                        var tempCommand = factory.CreateCommand(drawingCanvas, userProgram[j]);
+
+                        if (tempCommand is EndWhile)
+                        {
+                            index = j;
+                            break;
+                        }
+
+                        codeBlock.Add(userProgram[j]);
+                    }
+                    loopCommand.CodeBlockProgram = string.Join("\r\n", codeBlock.ToArray());
+
+                    programLines.Add(loopCommand);
+                    continue;
+                }
+
                 // Substitute variables into command if needed
                 string checkedVariableLine = CheckVariables(userProgram[index]);
 
@@ -170,7 +196,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Gets the value indicating whether the user program has syntax errors.
+        /// Gets or sets the value indicating whether the user program has syntax errors.
         /// </summary>
         public bool HasNoSyntaxError
         {
@@ -178,12 +204,18 @@ namespace ASE_Assignment
             set { hasNoSyntaxError = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the program lines of the user program.
+        /// </summary>
         public ArrayList ProgramLines
         {
             get { return programLines; }
             set { programLines = value; }
         }
 
+        /// <summary>
+        /// Gets or sets the variables of the user program.
+        /// </summary>
         public Dictionary<string, int> Variables
         {
             get { return variables; }

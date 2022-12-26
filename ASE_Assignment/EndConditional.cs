@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace ASE_Assignment
 {
     /// <summary>
-    /// A class that confirms if 
+    /// A class that signifies the end of a conditional command code block.
     /// </summary>
     public class EndConditional : Command
     {

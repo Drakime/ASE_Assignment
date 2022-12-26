@@ -16,24 +16,6 @@ namespace ASE_Assignment
         private int variableValue = 0;
         private Dictionary<string, int> variables = new Dictionary<string, int>();
 
-        public int VariableValue
-        {
-            get { return variableValue; }
-            set { variableValue = value; }
-        }
-
-        public string VariableName
-        {
-            get { return variableName; }
-            set { variableName = value; }
-        }
-
-        public Dictionary<string, int> Variables
-        {
-            get { return variables; }
-            set { variables = value; }
-        }
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -89,6 +71,14 @@ namespace ASE_Assignment
 
                 string mathOperator = Parameters[3];
 
+                if (variables.ContainsKey(variableName))
+                {
+                    variableValue = variables[variableName];
+                } else
+                {
+                    Errors.Add(InvalidTypeOfParameters);
+                }
+
                 if (Int32.TryParse(Parameters[4], out int increment)) { }
                 else
                 {
@@ -117,6 +107,11 @@ namespace ASE_Assignment
             }
         }
 
+        /// <summary>
+        /// Checks that the variable declaration has been declared in the correct format.
+        /// </summary>
+        /// <param name="input">The variable declaration.</param>
+        /// <returns>A boolean determining if the variable declaration format is valid.</returns>
         public bool CheckVariableDeclaration(string input)
         {
             Regex regex = new Regex("[a-zA-Z]+\\s=\\s[a-zA-Z]+\\s\\+\\s[0-9]+", RegexOptions.IgnoreCase);
@@ -124,11 +119,38 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Assigns the variable name to the class attribute.
+        /// Returns execution back to the class that called the command.
         /// </summary>
         public override void Operation()
         {
             return;
+        }
+
+        /// <summary>
+        /// Gets or sets the value of the variable.
+        /// </summary>
+        public int VariableValue
+        {
+            get { return variableValue; }
+            set { variableValue = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the variable.
+        /// </summary>
+        public string VariableName
+        {
+            get { return variableName; }
+            set { variableName = value; }
+        }
+
+        /// <summary>
+        /// Gets or sets the current list of variables that the variable has access to.
+        /// </summary>
+        public Dictionary<string, int> Variables
+        {
+            get { return variables; }
+            set { variables = value; }
         }
     }
 }

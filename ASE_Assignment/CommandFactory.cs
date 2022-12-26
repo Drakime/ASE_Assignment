@@ -48,6 +48,11 @@ namespace ASE_Assignment
                     return new ConditionalCommand(canvas, condition);
                 case "endif":
                     return new EndConditional(parameters);
+                case "while":
+                    condition = Parser.ParseProgram(userInput);
+                    return new LoopCommand(canvas, condition);
+                case "endwhile":
+                    return new EndWhile(parameters);
                 case "save":
                     return new Save(parameters);
                 case "load":
