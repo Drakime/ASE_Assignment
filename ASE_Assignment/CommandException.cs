@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace ASE_Assignment
 {
     /// <summary>
-    /// A class that outputs and error message to the console
+    /// A class that outputs an error message to the console
     /// if the command input by the user is not valid.
     /// </summary>
     public class CommandException : Command

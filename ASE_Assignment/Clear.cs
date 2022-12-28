@@ -25,8 +25,6 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Parses the user input.
-        /// 
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>

@@ -31,14 +31,12 @@ namespace ASE_Assignment
             Parameters = parameters;
             VerifyParameters();
         }
-        
+
         /// <summary>
         /// Parses the parameter from the user input and sets the
         /// class attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 1)
@@ -58,11 +56,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, draws a circle on a canvas with
-        /// the argument provided by the user.
+        /// Draws a circle on a canvas with the argument provided by the user.
         /// </summary>
+        /// <remarks>Outputs an error message if there any, ignoring the drawing action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)
@@ -90,7 +86,9 @@ namespace ASE_Assignment
             g.Dispose();
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the radius of the circle.
+        /// </summary>
         public int Radius
         {
             get { return radius; }

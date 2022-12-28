@@ -11,6 +11,9 @@ namespace ASE_Assignment
     /// </summary>
     public class Colour : Command
     {
+        /// <summary>
+        /// The colour of the drawing tool.
+        /// </summary>
         private Color toolColour;
         
         /// <summary>
@@ -84,7 +87,9 @@ namespace ASE_Assignment
             DrawingCanvas.ToolColour = ToolColour;
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the colour of the tool.
+        /// </summary>
         public Color ToolColour
         {
             get { return toolColour; }

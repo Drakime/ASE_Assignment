@@ -8,12 +8,29 @@ namespace ASE_Assignment
 {
     public abstract class Command
     {
-        // Error messages
+        /// <summary>
+        /// An error message for invalid parameter types.
+        /// </summary>
         private const string invalidTypeOfParameters = "Parameter types are invalid\r\n";
+
+        /// <summary>
+        /// An error message of an invalid number of parameters.
+        /// </summary>
         private const string invalidNumberOfParameters = "Number of parameters are incorrect\r\n";
 
+        /// <summary>
+        /// The name of the command.
+        /// </summary>
         private string name = "";
+
+        /// <summary>
+        /// A collection of parameters of the command.
+        /// </summary>
         private List<string> parameters = new List<string>();
+
+        /// <summary>
+        /// The canvas to be drawn on.
+        /// </summary>
         private Canvas drawingCanvas;
 
         /// <summary>
@@ -31,10 +48,9 @@ namespace ASE_Assignment
 
         /// <summary>
         /// The action of the command.
-        /// 
-        /// This could be the graphical drawing onto a given canvas
-        /// or the updating of attributes for a canvas instance.
         /// </summary>
+        /// <remarks>The action could be the graphical drawing onto a given canvas
+        /// or the updating of attributes for a canvas instance.</remarks>
         public abstract void Operation();
 
         /// <summary>
