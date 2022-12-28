@@ -11,10 +11,30 @@ namespace ASE_Assignment
     /// </summary>
     public class Canvas
     {
+        /// <summary>
+        /// A bitmap to be drawn on.
+        /// </summary>
         private Bitmap bitmap;
+
+        /// <summary>
+        /// The x-coordinate of the drawing tool.
+        /// </summary>
         private int pointX = 0;
+
+        /// <summary>
+        /// The y-coordinate of the drawing tool.
+        /// </summary>
         private int pointY = 0;
+
+        /// <summary>
+        /// The colour of the drawing tool.
+        /// </summary>
         Color toolColour = Color.Black;
+
+        /// <summary>
+        /// A value indicating whether the shape being drawn by the drawing tool
+        /// is filled.
+        /// </summary>
         private bool hasShapeFilled = false;
 
         /// <summary>

@@ -13,8 +13,19 @@ namespace ASE_Assignment
     /// </summary>
     public class ConditionalCommand : Command
     {
+        /// <summary>
+        /// A collection of currently known variables of the user program.
+        /// </summary>
         private Dictionary<string, int> variables;
+
+        /// <summary>
+        /// The code block of the user program within the conditional command.
+        /// </summary>
         private string codeBlockProgram;
+
+        /// <summary>
+        /// An instance of the <see cref="UserProgram"/> class, for the code block.
+        /// </summary>
         private UserProgram codeBlock;
 
         /// <summary>
