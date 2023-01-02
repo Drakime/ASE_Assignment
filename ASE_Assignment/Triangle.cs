@@ -16,6 +16,7 @@ namespace ASE_Assignment
         /// The list of coordinate points of the triangle vertices.
         /// </summary>
         private List<Point> points = new List<Point>();
+
         /// <summary>
         /// The list of integers making up the coordinate points
         /// of the triangle vertices.
@@ -38,10 +39,8 @@ namespace ASE_Assignment
         /// <summary>
         /// Parses the parameter from the user input and sets the
         /// class attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks>
         public override void VerifyParameters()
         {
             // Checks that the split string has 3 tokens
@@ -87,11 +86,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, draws a triangle on a canvas with
-        /// the arguments provided by the user.
+        /// Draws a triangle on a canvas the arguments provided by the user.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the drawing action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)
@@ -120,7 +117,9 @@ namespace ASE_Assignment
             g.Dispose();
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the list of points of the triangle.
+        /// </summary>
         public List<Point> Points
         {
             get { return points; }

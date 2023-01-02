@@ -15,7 +15,14 @@ namespace ASE_Assignment
     /// </summary>
     public class Run : Command
     {
+        /// <summary>
+        /// An instance of the <see cref=">UserProgram"/> class for program execution.
+        /// </summary>
         private UserProgram program;
+
+        /// <summary>
+        /// The user program from the program textbox.
+        /// </summary>
         private string userProgram;
 
         /// <summary>
@@ -33,8 +40,6 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Parses the user input.
-        /// 
         /// If criteria is not met, adds to a list collection named
         /// 'errors'.
         /// </summary>
@@ -48,10 +53,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, executes the user program.
+        /// Sets up and executes the user program.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring program execution.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)

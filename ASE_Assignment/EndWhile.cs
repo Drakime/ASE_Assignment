@@ -5,11 +5,19 @@
     /// </summary>
     public class EndWhile : Command
     {
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="parameters">The parameters of the user input.</param>
         public EndWhile(List<string> parameters)
         {
             Parameters = parameters;
         }
 
+        /// <summary>
+        /// If criteria for the parameters is not met, adds to a list
+        /// of list collection named 'Errors'.
+        /// </summary>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 0)
@@ -19,6 +27,9 @@
             }
         }
 
+        /// <summary>
+        /// Returns execution back to the class that called the command.
+        /// </summary>
         public override void Operation()
         {
             return;

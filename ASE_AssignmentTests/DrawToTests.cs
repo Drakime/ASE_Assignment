@@ -96,6 +96,13 @@ namespace ASE_AssignmentTests
             Assert.IsTrue(drawto.Errors.Count != 0);
         }
 
+        /// <summary>
+        /// Asserts that the canvas attributes are correctly updated when the 'DrawTo' command
+        /// is called.
+        /// </summary>
+        /// <param name="userInput">The input of the user.</param>
+        /// <param name="expectedX">The x-coordinate of the canvas that is to be expected.</param>
+        /// <param name="expectedY">The y-coordinate of the canvas that is to be expected.</param>
         [DataTestMethod]
         [DataRow("drawto 10,15", 10, 15)]
         [DataRow("drawto 67,90", 67, 90)]

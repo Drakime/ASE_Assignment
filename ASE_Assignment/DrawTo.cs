@@ -36,10 +36,8 @@ namespace ASE_Assignment
         /// <summary>
         /// Parses the parameter from the user input and sets the
         /// class attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks>
         public override void VerifyParameters()
         {
             string[] userInputParameters = Parameters[0].Split(",");
@@ -63,12 +61,10 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, draws a line on a canvas from the
-        /// current tool position to the coordinates provided
-        /// by the user.
+        /// Draws a line on a canvas from the current tool position to 
+        /// the coordinates provided by the user.
         /// </summary>
+        /// <remarks>Outs an error message if there are any, ignoring the drawing action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)
@@ -90,13 +86,17 @@ namespace ASE_Assignment
             DrawingCanvas.PointY = y;
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the x-coordinate to draw to.
+        /// </summary>
         public int X
         {
             get { return x; }
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the y-coordinate to draw to.
+        /// </summary>
         public int Y
         {
             get { return y; }

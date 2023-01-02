@@ -25,10 +25,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Parses the user input.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
+        /// If criteria is not met, adds to a list collection named 'errors'.
         /// </summary>
         public override void VerifyParameters()
         {
@@ -40,11 +37,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, resets the tool position of the canvas
-        /// to zero.
+        /// Resets the tool position of the canvas to zero.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the update action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)

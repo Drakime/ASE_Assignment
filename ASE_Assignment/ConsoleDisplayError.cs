@@ -40,7 +40,7 @@ namespace ASE_Assignment
         /// Prints errors to the console, based on the user input
         /// from the program textbox.
         /// </summary>
-        /// <param name="lineNumber"></param>
+        /// <param name="lineNumber">The line number that the error occurs.</param>
         public void PrintProgramErrorToConsole(int lineNumber)
         {
             foreach (string error in errors)

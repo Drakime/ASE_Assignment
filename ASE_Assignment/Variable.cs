@@ -12,8 +12,19 @@ namespace ASE_Assignment
     /// </summary>
     public class Variable : Command
     {
+        /// <summary>
+        /// The name of the variable.
+        /// </summary>
         private string variableName = "";
+
+        /// <summary>
+        /// The value of the variable.
+        /// </summary>
         private int variableValue = 0;
+
+        /// <summary>
+        /// The currently existing variables of the user program.
+        /// </summary>
         private Dictionary<string, int> variables = new Dictionary<string, int>();
 
         /// <summary>
@@ -27,7 +38,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Constructor for use by user program class.
+        /// Constructor for use by the <see cref=">UserProgram"/> class.
         /// </summary>
         public Variable()
         {
@@ -37,12 +48,10 @@ namespace ASE_Assignment
         /// <summary>
         /// Parses the parameter from the user input and sets the class
         /// attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks
         public override void VerifyParameters()
         {
-            // Create a constructor that doesn't immediately call VerifyParameters();
             if (Parameters.Count == 3)
             {
                 if (variables.ContainsKey(Parameters[2]))
@@ -65,7 +74,7 @@ namespace ASE_Assignment
                     Errors.Add(InvalidTypeOfParameters);
                 }
             }
-            else if (Parameters.Count == 5 && CheckVariableDeclaration(string.Join(" ", Parameters)))
+            else if (Parameters.Count == 5 && CheckVariableDeclaration(string.Join(" ", Parameters)))   // For variables that increment
             {
                 variableName = Parameters[0];
 
@@ -111,7 +120,7 @@ namespace ASE_Assignment
         /// Checks that the variable declaration has been declared in the correct format.
         /// </summary>
         /// <param name="input">The variable declaration.</param>
-        /// <returns>A boolean determining if the variable declaration format is valid.</returns>
+        /// <returns>A flag determining if the variable declaration format is valid.</returns>
         public bool CheckVariableDeclaration(string input)
         {
             Regex regex = new Regex("[a-zA-Z]+\\s=\\s[a-zA-Z]+\\s\\+\\s[0-9]+", RegexOptions.IgnoreCase);
