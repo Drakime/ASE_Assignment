@@ -15,7 +15,14 @@ namespace ASE_Assignment
     /// </summary>
     public class Syntax : Command
     {
+        /// <summary>
+        /// An instance of the <see cref=">UserProgram"/> class to check syntax.
+        /// </summary>
         private UserProgram program;
+
+        /// <summary>
+        /// The user program from the program text box.
+        /// </summary>
         private string userProgram;
 
         /// <summary>
@@ -33,10 +40,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Parses the user input.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
+        /// If criteria is not met, adds to a list collection named 'errors'.
         /// </summary>
         public override void VerifyParameters()
         {
@@ -48,10 +52,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, checks the syntax of the program and outputs any error messages to the console.
+        /// Checks the syntax of the program and outputs any error messages to the console.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)

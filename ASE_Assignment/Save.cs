@@ -25,10 +25,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Parses the user input.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
+        /// If criteria is not met, adds to a list collection named 'errors'.
         /// </summary>
         public override void VerifyParameters()
         {
@@ -40,11 +37,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, saves the program in the programTextBox
-        /// to a text file.
+        /// Saves the program in the program text box to a text file.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the save action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)

@@ -58,7 +58,7 @@ namespace ASE_Assignment
         /// <summary>
         /// Draws a circle on a canvas with the argument provided by the user.
         /// </summary>
-        /// <remarks>Outputs an error message if there any, ignoring the drawing action.</remarks>
+        /// <remarks>Outputs an error message if there are any, ignoring the drawing action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)

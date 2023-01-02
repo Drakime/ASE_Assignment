@@ -16,10 +16,29 @@ namespace ASE_Assignment
     /// </summary>
     public class UserProgram
     {
+        /// <summary>
+        /// An instance of the <see cref=">CommandFactory"/> class to generate command objects.
+        /// </summary>
         private CommandFactory factory;
+
+        /// <summary>
+        /// A collection of commands to be executed.
+        /// </summary>
         private ArrayList programLines;
+
+        /// <summary>
+        /// The canvas to be drawn on.
+        /// </summary>
         private Canvas drawingCanvas;
+
+        /// <summary>
+        /// A flag indicating if there are any syntax errors in the user program.
+        /// </summary>
         private bool hasNoSyntaxError = true;
+
+        /// <summary>
+        /// A collection of variables in the user program.
+        /// </summary>
         private Dictionary<string, int> variables = new Dictionary<string, int>();
 
         /// <summary>
@@ -132,7 +151,7 @@ namespace ASE_Assignment
         /// to be substituted into the program line.
         /// </summary>
         /// <param name="line">The command to be checked.</param>
-        /// <returns></returns>
+        /// <returns>The command as a string with variables substituted in.</returns>
         public string CheckVariables(string line)
         {
             string[] tokens = line.Split(" ");
@@ -167,8 +186,8 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Checks each 'Command' object in an arraylist for errors.
-        /// If there are any errors, the error is printed to the console.
+        /// Checks each 'Command' object in an arraylist for errors, printing them
+        /// to the console if there are any.
         /// </summary>
         public void CheckSyntax()
         {
@@ -196,7 +215,7 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Gets or sets the value indicating whether the user program has syntax errors.
+        /// Gets or sets a flag indicating whether the user program has syntax errors.
         /// </summary>
         public bool HasNoSyntaxError
         {

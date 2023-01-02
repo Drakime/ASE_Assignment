@@ -13,8 +13,19 @@ namespace ASE_Assignment
     /// </summary>
     public class LoopCommand : Command
     {
+        /// <summary>
+        /// The variables of the user program.
+        /// </summary>
         private Dictionary<string, int> variables;
+
+        /// <summary>
+        /// The code block within the loop conditional.
+        /// </summary>
         private string codeBlockProgram;
+
+        /// <summary>
+        /// An instance of the <see cref="UserProgram"/> class for code block execution.
+        /// </summary>
         private UserProgram codeBlock;
 
         /// <summary>
@@ -45,12 +56,10 @@ namespace ASE_Assignment
         /// <summary>
         /// Evaluates the condition provided by the user in the loop command.
         /// </summary>
-        /// <returns>A boolean determining if the condition is true or false.</returns>
-        /// <exception cref="Exception">Thrown if the variable in the condition does not exist
-        /// in the current program.</exception>
+        /// <returns>A flag determining if the condition is true.</returns>
         public bool ParseCondition()
         {
-            string conditionVariable;
+            string conditionVariable = " ";
 
             if (variables.ContainsKey(Parameters[0]))
             {
@@ -58,7 +67,8 @@ namespace ASE_Assignment
             }
             else
             {
-                throw new Exception("Variable not found.");
+                Errors.Add("Variable not found");
+                return false;
             }
 
             if (Int32.TryParse(conditionVariable, out int var)) { }

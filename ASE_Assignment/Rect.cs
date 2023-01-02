@@ -15,6 +15,7 @@ namespace ASE_Assignment
         /// The width of the rectangle.
         /// </summary>
         private int width;
+
         /// <summary>
         /// The height of the rectangle.
         /// </summary>
@@ -36,10 +37,8 @@ namespace ASE_Assignment
         /// <summary>
         /// Parses the parameter from the user input and sets the
         /// class attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 1)
@@ -69,11 +68,9 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, draws a rectangle on the canvas with
-        /// the argument provided by the user.
+        /// Draws a rectangle on the canvas with the argument provided by the user.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the drawing action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)
@@ -101,13 +98,17 @@ namespace ASE_Assignment
             g.Dispose();
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the width of the rectangle.
+        /// </summary>
         public int Width
         {
             get { return width; }
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the height of the rectangle.
+        /// </summary>
         public int Height
         {
             get { return height; }

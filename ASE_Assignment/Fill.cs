@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 namespace ASE_Assignment
 {
     /// <summary>
-    /// A class that changes if drawn shapes are filled or not.
+    /// A class that determines if drawn shapes are filled or not.
     /// </summary>
     public class Fill : Command
     {
+        /// <summary>
+        /// The parameter of the user input specifying if the fill feature is on or off.
+        /// </summary>
         private string shapeFill;
 
         /// <summary>
@@ -29,10 +32,8 @@ namespace ASE_Assignment
         /// <summary>
         /// Parses the parameter from the user input and sets the
         /// class attribute accordingly.
-        /// 
-        /// If criteria is not met, adds to a list collection named
-        /// 'errors'.
         /// </summary>
+        /// <remarks>If criteria is not met, adds to a list collection named 'errors'.</remarks>
         public override void VerifyParameters()
         {
             if (Parameters.Count != 1)
@@ -52,11 +53,10 @@ namespace ASE_Assignment
         }
 
         /// <summary>
-        /// Outputs an error message if there are any.
-        /// 
-        /// Otherwise, updates the 'hasShapeFilled' attribute
+        /// Updates the 'hasShapeFilled' attribute
         /// of the canvas.
         /// </summary>
+        /// <remarks>Outputs an error message if there are any, ignoring the update action.</remarks>
         public override void Operation()
         {
             if (Errors.Count != 0)
@@ -76,7 +76,9 @@ namespace ASE_Assignment
             }
         }
 
-        // For unit tests
+        /// <summary>
+        /// Gets the parameter of the user input specifying if the shape is filled or not.
+        /// </summary>
         public string ShapeFill
         {
             get { return shapeFill; }
