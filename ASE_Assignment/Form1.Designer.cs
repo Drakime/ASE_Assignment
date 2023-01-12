@@ -40,8 +40,10 @@
             this.console = new System.Windows.Forms.TextBox();
             this.consoleLabel = new System.Windows.Forms.Label();
             this.syntax_button = new System.Windows.Forms.Button();
+            this.cursorDrawingCanvas = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursorDrawingCanvas)).BeginInit();
             this.SuspendLayout();
             // 
             // commandLine
@@ -158,11 +160,20 @@
             this.syntax_button.UseVisualStyleBackColor = true;
             this.syntax_button.Click += new System.EventHandler(this.syntax_button_Click);
             // 
+            // cursorDrawingCanvas
+            // 
+            this.cursorDrawingCanvas.Location = new System.Drawing.Point(415, 27);
+            this.cursorDrawingCanvas.Name = "cursorDrawingCanvas";
+            this.cursorDrawingCanvas.Size = new System.Drawing.Size(373, 405);
+            this.cursorDrawingCanvas.TabIndex = 8;
+            this.cursorDrawingCanvas.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 661);
+            this.Controls.Add(this.cursorDrawingCanvas);
             this.Controls.Add(this.syntax_button);
             this.Controls.Add(this.consoleLabel);
             this.Controls.Add(this.console);
@@ -177,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.drawingCanvas)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cursorDrawingCanvas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +208,6 @@
         private TextBox console;
         private Label consoleLabel;
         private Button syntax_button;
+        private PictureBox cursorDrawingCanvas;
     }
 }

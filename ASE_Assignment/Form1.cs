@@ -1,3 +1,4 @@
+using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 
 namespace ASE_Assignment
@@ -9,6 +10,8 @@ namespace ASE_Assignment
     {
         Canvas canvas;
         CommandFactoryFactory factory;
+        Canvas cursorCanvas;
+        Cursor cursor;
 
         /// <summary>
         /// Initialises an instance of the form.    
@@ -16,12 +19,24 @@ namespace ASE_Assignment
         public Form1()
         {
             InitializeComponent();
+
+            // Setting the background colour of the cursor canvas as transparent will only
+            // result in the canvas being the same colour as the form.
+            // Setting the parent of the cursor canvas as the drawing canvas will allow the background 
+            // to be fully transparent, displaying the bitmap on the canvas below.
             drawingCanvas.BackColor = Color.Gray;
+            cursorDrawingCanvas.BackColor = Color.Transparent;
+            cursorDrawingCanvas.Parent = drawingCanvas;
+            cursorDrawingCanvas.Location = new Point(cursorDrawingCanvas.Location.X - drawingCanvas.Location.X,
+                cursorDrawingCanvas.Location.Y - drawingCanvas.Location.Y);
+
             runButton.Enabled = false;
 
-            // Creates new bitmap in canvas class, the same size as the picturebox.
+            // Creates new bitmaps in canvas classes, the same size as the picturebox.
             canvas = new Canvas(new Bitmap(drawingCanvas.Width, drawingCanvas.Height));
+            cursorCanvas = new Canvas(new Bitmap(drawingCanvas.Width, drawingCanvas.Height));
             factory = new CommandFactory();
+            cursor = ASE_Assignment.Cursor.Instance;
         }
 
         /// <summary>
@@ -51,6 +66,8 @@ namespace ASE_Assignment
             string userProgram = programTextBox.Text;
 
             factory.Command(canvas, "run" + " " + userProgram);
+
+            cursor.UpdateCursor(cursorCanvas, canvas);
         }
 
         /// <summary>
@@ -63,6 +80,8 @@ namespace ASE_Assignment
             string userProgram = programTextBox.Text;
 
             factory.Command(canvas, "syntax" + " " + userProgram);
+
+            cursor.UpdateCursor(cursorCanvas, canvas);
         }
 
         /// <summary>
@@ -92,6 +111,9 @@ namespace ASE_Assignment
                     drawingCanvas.Image = canvas.Bitmap;
                 }
                 commandLine.Clear();
+
+                cursor.UpdateCursor(cursorCanvas, canvas);
+                cursorDrawingCanvas.Image = cursorCanvas.Bitmap;
             }
         }
 

@@ -84,7 +84,7 @@ namespace ASE_AssignmentTests
             program.SetProgramLines(userInput);
 
             // Assert
-            Assert.IsTrue(program.ProgramLines[1].GetType() == typeof(ConditionalCommand));
+            Assert.IsTrue(program.ProgramLines[2].GetType() == typeof(ConditionalCommand));
         }
     }
 }

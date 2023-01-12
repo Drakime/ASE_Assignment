@@ -39,7 +39,7 @@ namespace ASE_AssignmentTests
             Variable v = new Variable(parameters);
 
             // Assert
-            Assert.AreEqual(expected, v.Value);
+            Assert.AreEqual(expected, v.VariableValue);
         }
 
         /// <summary>

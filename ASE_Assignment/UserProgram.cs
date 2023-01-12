@@ -139,6 +139,31 @@ namespace ASE_Assignment
                     continue;
                 }
 
+                if (command is MethodCommand)
+                {
+                    MethodCommand methodCommand = (MethodCommand)command;
+                    methodCommand.Variables = variables;
+
+                    List<string> codeBlock = new List<string>();
+
+                    for (int j = index + 1; j < userProgram.Length; j++)
+                    {
+                        var tempCommand = factory.CreateCommand(drawingCanvas, userProgram[j]);
+
+                        if (tempCommand is EndMethod)
+                        {
+                            index = j;
+                            break;
+                        }
+
+                        codeBlock.Add(userProgram[j]);
+                    }
+                    methodCommand.CodeBlockProgram = string.Join("\r\n", codeBlock.ToArray());
+
+                    programLines.Add(methodCommand);
+                    continue;
+                }
+
                 // Substitute variables into command if needed
                 string checkedVariableLine = CheckVariables(userProgram[index]);
 

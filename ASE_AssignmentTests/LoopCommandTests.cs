@@ -3,17 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ASE_AssignmentTests
 {
     /// <summary>
-    /// A test class for testing the 'ConditionalCommand' class.
+    /// A test class for testing the 'LoopCommand' class.
     /// </summary>
     [TestClass]
-    public class ConditionalCommandTests
+    public class LoopCommandTests
     {
         Bitmap bitmap;
         Canvas canvas;
@@ -31,17 +30,17 @@ namespace ASE_AssignmentTests
         }
 
         /// <summary>
-        /// Asserts that a conditional command correctly parses the condition
-        /// as true and returns the corresponding boolean value.
+        /// Asserts that a loop command correctly parses the condition as true
+        /// and returns the corresponding boolean value.
         /// </summary>
         [TestMethod]
-        public void ConditionalCommand_ParsesConditionCorrectlyAsTrue_InConditionalCommand()
+        public void LoopCommand_ParsesConditionCorrectlyAsTrue_InLoopCommand()
         {
             // Arrange and Act
-            string condition = "x == 100";
-            ConditionalCommand command = new ConditionalCommand(canvas, condition);
+            string condition = "x < 5";
+            LoopCommand command = new LoopCommand(canvas, condition);
             Dictionary<string, int> variables = new Dictionary<string, int>();
-            variables.Add("x", 100);
+            variables.Add("x", 1);
             command.Variables = variables;
 
             // Assert
@@ -49,17 +48,17 @@ namespace ASE_AssignmentTests
         }
 
         /// <summary>
-        /// Asserts that a conditional command correctly parses the condition
+        /// Asserts that a loop command correctly parses the condition
         /// as false and returns the corresponding boolean value.
         /// </summary>
         [TestMethod]
-        public void ConditionalCommand_ParsesConditionCorrectlyAsFalse_InConditionalCommand()
+        public void LoopCommand_ParsesConditionCorrectlyAsFalse_InLoopCommand()
         {
             // Arrange and Act
-            string condition = "x == 100";
-            ConditionalCommand command = new ConditionalCommand(canvas, condition);
+            string condition = "x < 5";
+            LoopCommand command = new LoopCommand(canvas, condition);
             Dictionary<string, int> variables = new Dictionary<string, int>();
-            variables.Add("x", 200);
+            variables.Add("x", 5);
             command.Variables = variables;
 
             // Assert
