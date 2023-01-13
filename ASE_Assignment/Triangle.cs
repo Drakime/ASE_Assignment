@@ -76,10 +76,17 @@ namespace ASE_Assignment
                 return;
             }
 
-            // Combine integers to create points, and add to list collection.
-            Point pt1 = new Point(splitPoints[0], splitPoints[1]);
-            Point pt2 = new Point(splitPoints[2], splitPoints[3]);
-            Point pt3 = new Point(splitPoints[4], splitPoints[5]);
+            // Calculate centroid of triangle and the vector to the cursor position,
+            // making the cursor position the new centroid.
+            int centroidX = (splitPoints[0] + splitPoints[2] + splitPoints[4]) / 3;
+            int centroidY = (splitPoints[1] + splitPoints[3] + splitPoints[5]) / 3;
+            int vectorX = DrawingCanvas.PointX - centroidX;
+            int vectorY = DrawingCanvas.PointY - centroidY;
+
+            // Combine integers with vector to create points, and add to list collection
+            Point pt1 = new Point(splitPoints[0] + vectorX, splitPoints[1] + vectorY);
+            Point pt2 = new Point(splitPoints[2] + vectorX, splitPoints[3] + vectorY);
+            Point pt3 = new Point(splitPoints[4] + vectorX, splitPoints[5] + vectorY);
             points.Add(pt1);
             points.Add(pt2);
             points.Add(pt3);

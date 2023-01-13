@@ -73,13 +73,13 @@ namespace ASE_Assignment
             if (DrawingCanvas.HasShapeFilled == false)
             {
                 Pen pen = new Pen(DrawingCanvas.ToolColour);
-                g.DrawEllipse(pen, DrawingCanvas.PointX, DrawingCanvas.PointY, radius * 2, radius * 2);
+                g.DrawEllipse(pen, DrawingCanvas.PointX - radius, DrawingCanvas.PointY - radius, radius * 2, radius * 2);
                 pen.Dispose();
             }
             else
             {
                 SolidBrush brush = new SolidBrush(DrawingCanvas.ToolColour);
-                g.FillEllipse(brush, DrawingCanvas.PointX, DrawingCanvas.PointY, radius * 2, radius * 2);
+                g.FillEllipse(brush, DrawingCanvas.PointX - radius, DrawingCanvas.PointY - radius, radius * 2, radius * 2);
                 brush.Dispose();
             }
 

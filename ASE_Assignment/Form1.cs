@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text.RegularExpressions;
 
@@ -40,6 +42,18 @@ namespace ASE_Assignment
         }
 
         /// <summary>
+        /// An event listener that draws the cursor in the default position when the
+        /// form is first shown.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            cursor.UpdateCursor(cursorCanvas, canvas);
+            cursorDrawingCanvas.Image = cursorCanvas.Bitmap;
+        }
+
+        /// <summary>
         /// An event listener that disables the "run" button if the program textbox is empty
         /// </summary>
         /// <param name="sender">The event source.</param>
@@ -68,6 +82,7 @@ namespace ASE_Assignment
             factory.Command(canvas, "run" + " " + userProgram);
 
             cursor.UpdateCursor(cursorCanvas, canvas);
+            cursorDrawingCanvas.Image = cursorCanvas.Bitmap;
         }
 
         /// <summary>
@@ -80,8 +95,6 @@ namespace ASE_Assignment
             string userProgram = programTextBox.Text;
 
             factory.Command(canvas, "syntax" + " " + userProgram);
-
-            cursor.UpdateCursor(cursorCanvas, canvas);
         }
 
         /// <summary>

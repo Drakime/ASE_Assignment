@@ -48,7 +48,7 @@ namespace ASE_Assignment
 
             g.Clear(Color.Transparent);
 
-            g.DrawEllipse(pen, drawingCanvas.PointX, drawingCanvas.PointY, 5, 5);
+            g.DrawEllipse(pen, drawingCanvas.PointX - (5/2), drawingCanvas.PointY - (5/2), 5, 5);
 
             g.Dispose();
         }

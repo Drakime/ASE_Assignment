@@ -85,13 +85,13 @@ namespace ASE_Assignment
             if (DrawingCanvas.HasShapeFilled == false)
             {
                 Pen pen = new Pen(DrawingCanvas.ToolColour);
-                g.DrawRectangle(pen, DrawingCanvas.PointX, DrawingCanvas.PointY, width, height);
+                g.DrawRectangle(pen, DrawingCanvas.PointX - (width / 2), DrawingCanvas.PointY - (height / 2), width, height);
                 pen.Dispose();
             }
             else
             {
                 SolidBrush brush = new SolidBrush(DrawingCanvas.ToolColour);
-                g.FillRectangle(brush, DrawingCanvas.PointX, DrawingCanvas.PointY, width, height);
+                g.FillRectangle(brush, DrawingCanvas.PointX - (width / 2), DrawingCanvas.PointY - (height / 2), width, height);
                 brush.Dispose();
             }
 
