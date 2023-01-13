@@ -116,7 +116,12 @@ namespace ASE_Assignment
                 codeBlock.Variables = variables;
                 codeBlock.SetProgramLines(codeBlockProgram);
                 codeBlock.CheckSyntax();
-                codeBlock.Execute();
+                
+                if (codeBlock.HasNoSyntaxError == true)
+                {
+                    codeBlock.Execute();
+                }
+
                 variables = codeBlock.Variables;
                 execute = ParseCondition();
             }

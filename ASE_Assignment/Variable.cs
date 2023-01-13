@@ -123,7 +123,7 @@ namespace ASE_Assignment
         /// <returns>A flag determining if the variable declaration format is valid.</returns>
         public bool CheckVariableDeclaration(string input)
         {
-            Regex regex = new Regex("[a-zA-Z]+\\s=\\s[a-zA-Z]+\\s\\+\\s[0-9]+", RegexOptions.IgnoreCase);
+            Regex regex = new Regex("[a-zA-Z]+\\s=\\s[a-zA-Z]+\\s[-+*\\/]\\s[0-9]+", RegexOptions.IgnoreCase);
             return regex.IsMatch(input);
         }
 
