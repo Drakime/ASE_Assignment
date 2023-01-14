@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
@@ -52,14 +54,23 @@ namespace ASE_Assignment
             userProgram.RemoveAt(0);
 
             return string.Join(" ", userProgram);
-            
         }
 
-        // Currently exists for test-driven development
-        public static int ParseVariable(string userInput)
+        /// <summary>
+        /// Extracts the parameters of the parameters list from the user input.
+        /// </summary>
+        /// <param name="userInput">The input of the user.</param>
+        /// <returns>The parameter list from the input.</returns>
+        public static List<string> ParseMethod(string userInput)
         {
-            // TODO: To be implemented
-            return 0;
+            List<string> parameters = new List<string>();
+
+            string methodParameters = userInput.Substring(7);
+            string otherInput = methodParameters.Substring(methodParameters.IndexOf(")") + 1);
+            parameters.Add(methodParameters);
+            parameters.Add(otherInput);
+
+            return parameters;
         }
     }
 }

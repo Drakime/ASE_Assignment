@@ -53,6 +53,11 @@ namespace ASE_Assignment
                     return new LoopCommand(canvas, condition);
                 case "endwhile":
                     return new EndWhile(parameters);
+                case "method":
+                    List<string> methodParameters = Parser.ParseMethod(userInput);
+                    return new MethodCommand(canvas, methodParameters);
+                case "endmethod":
+                    return new EndMethod(parameters);
                 case "save":
                     return new Save(parameters);
                 case "load":

@@ -17,7 +17,7 @@ namespace ASE_Assignment
         private Dictionary<string, int> variables;
 
         /// <summary>
-        /// The code block of the user program within the conditional command.
+        /// The code block of the user program within the method command.
         /// </summary>
         private string codeBlockProgram;
 
@@ -30,31 +30,39 @@ namespace ASE_Assignment
         /// Constructor.
         /// </summary>
         /// <param name="drawingCanvas">The canvas to be drawn on.</param>
-        public MethodCommand(Canvas drawingCanvas)
+        public MethodCommand(Canvas drawingCanvas, List<string> parameters)
         {
             DrawingCanvas = drawingCanvas;
+            Parameters = parameters;
+            Name = parameters[0];
             codeBlock = new UserProgram(drawingCanvas);
+            VerifyParameters();
+            codeBlock.Variables = variables;
+            codeBlock.SetProgramLines(codeBlockProgram);
         }
 
+        /// <summary>
+        /// Parses the parameters from the user input.
+        /// </summary>
         public override void VerifyParameters()
         {
-            // In this case, the verification would be of the parameters for the parameters list
+            if (Parameters.Count != 2 || Parameters[1] != " ")
+            {
+                Errors.Add(InvalidNumberOfParameters);
+                return;
+            }
+        }
+
+        /// <summary>
+        /// Returns execution to the user program.
+        /// </summary>
+        public override void Operation()
+        {
             return;
         }
 
         /// <summary>
-        /// Executes the commands in the method block.
-        /// </summary>
-        public override void Operation()
-        {
-            codeBlock.Variables = variables;
-            codeBlock.SetProgramLines(codeBlockProgram);
-            codeBlock.CheckSyntax();
-            codeBlock.Execute();
-        }
-
-        /// <summary>
-        /// Gets or sets the program lines for the conditional command.
+        /// Gets or sets the program lines for the method command.
         /// </summary>
         public string CodeBlockProgram
         {
@@ -64,7 +72,7 @@ namespace ASE_Assignment
 
         /// <summary>
         ///  Gets or sets the current variables of the program
-        ///  at the point that the conditional command is declared.
+        ///  at the point that the method command is declared.
         /// </summary>
         public Dictionary<string, int> Variables
         {

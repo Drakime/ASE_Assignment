@@ -42,6 +42,11 @@ namespace ASE_Assignment
         private Dictionary<string, int> variables = new Dictionary<string, int>();
 
         /// <summary>
+        /// A collection of methods in the user program.
+        /// </summary>
+        private ArrayList methods;
+
+        /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="drawingCanvas">The canvas that is to be drawn on.</param>
@@ -49,6 +54,7 @@ namespace ASE_Assignment
         {
             factory = new CommandFactory();
             programLines = new ArrayList();
+            methods = new ArrayList();
             this.drawingCanvas = drawingCanvas;
         }
 
@@ -160,6 +166,7 @@ namespace ASE_Assignment
                     }
                     methodCommand.CodeBlockProgram = string.Join("\r\n", codeBlock.ToArray());
 
+                    methods.Add(methodCommand);
                     programLines.Add(methodCommand);
                     continue;
                 }
