@@ -24,9 +24,9 @@ The assignment is to produce a Windows Form App, written in C#, that is capable 
 - [x] pen <colour> - black, red, green, orange, blue
 - [x] fill <on/off> - shape fill
 ### Programming Commands
-- [ ] Variables
-- [ ] Iteration - Loop
-- [ ] Selection - 'if statement'
+- [x] Variables
+- [x] Iteration - Loop
+- [x] Selection - 'if statement'
 - [ ] Syntax check before program run
 - [ ] Methods
   - Define method with:
